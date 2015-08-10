@@ -3,7 +3,7 @@
 ;;
 ;; Author: nakinor
 ;; Created: 2011-10-12
-;; Revised: 2012-06-05
+;; Revised: 2015-08-10
 ;;
 ; Scheme でも mto を実装してみるプロジェクト
 ; Gauche で用意されているライブラリを利用しているので gosh 専用です
@@ -27,11 +27,15 @@
     (lambda () ;読み込んだファイルに対して何かをする(thunk)
       (port-for-each ;一行読み込んで...
        (lambda (str) ;その行(str)に対して次の処理をさせる(->コンスセル作成)
-         (unless (rxmatch #/^\;.*|^$/ str) ;コメント行と空行を無視して...
+         (unless (rxmatch
+                  (string->regexp "^;.*|^$")
+                  str) ;コメント行と空行を無視して...
                  (push! dic-tmp ;次々と辞書に追加していく
                         (let ((ward ;局所変数を用意して...
                                (string-split ;文字列を単語に分けて...
-                                (regexp-replace #/\s\;.*/ str "") " /")))
+                                (regexp-replace
+                                 (string->regexp "[[:space:]];.*")
+                                 str "") " /")))
                           (cons (car ward) (cadr ward)))))) ;コンスセル作成
        read-line) ;一行読み込んで...の部分はここで終了
       ) ;ファイルに対して何か...の部分を終了
@@ -127,7 +131,7 @@ options:
 ;; メイン部分
 (define (main args) ;ここからスタートする
   (cond ((eq? 3 (length args)) (replace-from-file args))
-        ((eq? 2 (length args)) (replace-from-stdin args)) 
+        ((eq? 2 (length args)) (replace-from-stdin args))
         (else (display-usage)))
   0)
 
