@@ -73,7 +73,7 @@
                             </menuItem>
                             <menuItem title="Open…" keyEquivalent="o" id="72">
                                 <connections>
-                                    <action selector="openDocument:" target="-1" id="374"/>
+                                    <action selector="readFromFile:" target="494" id="7hY-Id-jeu"/>
                                 </connections>
                             </menuItem>
                             <menuItem title="Open Recent" id="124">
@@ -97,7 +97,7 @@
                             </menuItem>
                             <menuItem title="Save…" keyEquivalent="s" id="75">
                                 <connections>
-                                    <action selector="saveDocument:" target="-1" id="362"/>
+                                    <action selector="writeToFile:" target="494" id="LD1-OD-fxf"/>
                                 </connections>
                             </menuItem>
                             <menuItem title="Revert to Saved" id="112">
@@ -654,9 +654,18 @@
             <rect key="screenRect" x="0.0" y="0.0" width="1280" height="778"/>
             <value key="minSize" type="size" width="640" height="480"/>
             <view key="contentView" id="372">
-                <rect key="frame" x="0.0" y="0.0" width="800" height="600"/>
+                <rect key="frame" x="0.0" y="-1" width="800" height="600"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="dNs-9v-tDs">
+                        <rect key="frame" x="155" y="568" width="100" height="19"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="変換前の文章" id="wtc-Bv-tOb">
+                            <font key="font" size="16" name="AquaKana"/>
+                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
                     <scrollView borderType="groove" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" id="AgJ-pF-Sf1">
                         <rect key="frame" x="20" y="160" width="370" height="400"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES"/>
@@ -686,48 +695,6 @@
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
                     </scrollView>
-                    <button verticalHuggingPriority="750" id="Exl-dk-aFb">
-                        <rect key="frame" x="107" y="46" width="196" height="32"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <buttonCell key="cell" type="push" title="旧仮名から新仮名" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="h1m-L6-dee">
-                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" size="13" name="AquaKana"/>
-                        </buttonCell>
-                        <connections>
-                            <action selector="TradToModern:" target="494" id="KKG-W0-IFn"/>
-                        </connections>
-                    </button>
-                    <button verticalHuggingPriority="750" id="Dlg-Q4-xkR">
-                        <rect key="frame" x="107" y="13" width="196" height="32"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <buttonCell key="cell" type="push" title="旧字体から新字体" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Lhw-d6-Y5R">
-                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" size="13" name="AquaKana"/>
-                        </buttonCell>
-                        <connections>
-                            <action selector="OldToNew:" target="494" id="ckQ-nf-wBI"/>
-                        </connections>
-                    </button>
-                    <button verticalHuggingPriority="750" id="r0I-9U-LJB">
-                        <rect key="frame" x="497" y="112" width="196" height="32"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <buttonCell key="cell" type="push" title="結果を入力へ" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="nVt-4f-sZV">
-                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" size="13" name="AquaKana"/>
-                        </buttonCell>
-                        <connections>
-                            <action selector="ResultToInput:" target="494" id="asg-v3-Zin"/>
-                        </connections>
-                    </button>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="dNs-9v-tDs">
-                        <rect key="frame" x="155" y="568" width="100" height="19"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="変換前の文章" id="wtc-Bv-tOb">
-                            <font key="font" size="16" name="AquaKana"/>
-                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                    </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="48L-H9-PZT">
                         <rect key="frame" x="545" y="568" width="100" height="19"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -737,39 +704,6 @@
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <button verticalHuggingPriority="750" id="7Ko-7s-waK">
-                        <rect key="frame" x="497" y="79" width="196" height="32"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <buttonCell key="cell" type="push" title="新字新仮名から旧字旧仮名" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="JjQ-fI-AjA">
-                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" size="13" name="AquaKana"/>
-                        </buttonCell>
-                        <connections>
-                            <action selector="ModernNewToTradOld:" target="494" id="aMG-nX-mTX"/>
-                        </connections>
-                    </button>
-                    <button verticalHuggingPriority="750" id="GUz-Yf-JPL">
-                        <rect key="frame" x="107" y="79" width="196" height="32"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <buttonCell key="cell" type="push" title="旧字旧仮名から新字新仮名" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="LGl-Tc-SUL">
-                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" size="13" name="AquaKana"/>
-                        </buttonCell>
-                        <connections>
-                            <action selector="TradOldToModernNew:" target="494" id="LRY-iz-nGf"/>
-                        </connections>
-                    </button>
-                    <button verticalHuggingPriority="750" id="kUa-J5-7Jh">
-                        <rect key="frame" x="107" y="112" width="196" height="32"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <buttonCell key="cell" type="push" title="内容を消去" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="uOk-yv-rzf">
-                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" size="13" name="AquaKana"/>
-                        </buttonCell>
-                        <connections>
-                            <action selector="ClearInput:" target="494" id="Xkd-Ds-wGH"/>
-                        </connections>
-                    </button>
                     <scrollView borderType="groove" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" id="EHu-om-Bae">
                         <rect key="frame" x="410" y="160" width="370" height="400"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" heightSizable="YES"/>
@@ -799,15 +733,70 @@
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
                     </scrollView>
-                    <button verticalHuggingPriority="750" id="Q1d-TV-JcR">
-                        <rect key="frame" x="497" y="13" width="196" height="32"/>
+                    <button verticalHuggingPriority="750" id="kUa-J5-7Jh">
+                        <rect key="frame" x="107" y="112" width="196" height="32"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <buttonCell key="cell" type="push" title="新字体から旧字体" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="9Sj-2y-W04">
+                        <buttonCell key="cell" type="push" title="内容を消去" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="uOk-yv-rzf">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" size="13" name="AquaKana"/>
                         </buttonCell>
                         <connections>
-                            <action selector="NewToOld:" target="494" id="Z76-1I-IgZ"/>
+                            <action selector="ClearInput:" target="494" id="Xkd-Ds-wGH"/>
+                        </connections>
+                    </button>
+                    <button verticalHuggingPriority="750" id="r0I-9U-LJB">
+                        <rect key="frame" x="497" y="112" width="196" height="32"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <buttonCell key="cell" type="push" title="結果を入力へ" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="nVt-4f-sZV">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" size="13" name="AquaKana"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="ResultToInput:" target="494" id="asg-v3-Zin"/>
+                        </connections>
+                    </button>
+                    <button verticalHuggingPriority="750" id="GUz-Yf-JPL">
+                        <rect key="frame" x="107" y="79" width="196" height="32"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <buttonCell key="cell" type="push" title="旧字旧仮名から新字新仮名" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="LGl-Tc-SUL">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" size="13" name="AquaKana"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="TradOldToModernNew:" target="494" id="LRY-iz-nGf"/>
+                        </connections>
+                    </button>
+                    <button verticalHuggingPriority="750" id="Exl-dk-aFb">
+                        <rect key="frame" x="107" y="46" width="196" height="32"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <buttonCell key="cell" type="push" title="旧仮名から新仮名" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="h1m-L6-dee">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" size="13" name="AquaKana"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="TradToModern:" target="494" id="KKG-W0-IFn"/>
+                        </connections>
+                    </button>
+                    <button verticalHuggingPriority="750" id="Dlg-Q4-xkR">
+                        <rect key="frame" x="107" y="13" width="196" height="32"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <buttonCell key="cell" type="push" title="旧字体から新字体" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Lhw-d6-Y5R">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" size="13" name="AquaKana"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="OldToNew:" target="494" id="ckQ-nf-wBI"/>
+                        </connections>
+                    </button>
+                    <button verticalHuggingPriority="750" id="7Ko-7s-waK">
+                        <rect key="frame" x="497" y="79" width="196" height="32"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <buttonCell key="cell" type="push" title="新字新仮名から旧字旧仮名" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="JjQ-fI-AjA">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" size="13" name="AquaKana"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="ModernNewToTradOld:" target="494" id="aMG-nX-mTX"/>
                         </connections>
                     </button>
                     <button verticalHuggingPriority="750" id="Wq5-zW-xwS">
@@ -819,6 +808,17 @@
                         </buttonCell>
                         <connections>
                             <action selector="ModernToTrad:" target="494" id="cDp-JB-687"/>
+                        </connections>
+                    </button>
+                    <button verticalHuggingPriority="750" id="Q1d-TV-JcR">
+                        <rect key="frame" x="497" y="13" width="196" height="32"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <buttonCell key="cell" type="push" title="新字体から旧字体" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="9Sj-2y-W04">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" size="13" name="AquaKana"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="NewToOld:" target="494" id="Z76-1I-IgZ"/>
                         </connections>
                     </button>
                 </subviews>

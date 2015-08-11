@@ -148,4 +148,43 @@
     _resultTextArea.string = [mto replaceStringCar:_inputTextArea.string];
 }
 
+- (IBAction)writeToFile:(id)sender {
+    NSSavePanel *savePanel = [NSSavePanel savePanel];
+    NSArray *allowedFileTypes =
+      [NSArray arrayWithObjects:@"txt",@"'TEXT'",nil];
+    [savePanel setAllowedFileTypes:allowedFileTypes];
+    NSInteger pressedButton = [savePanel runModal];
+    if(pressedButton == NSOKButton)
+    {
+      NSURL *filePath = [savePanel URL];
+      [_resultTextArea.string writeToFile:
+                        [[filePath absoluteString] substringFromIndex:7]
+                               atomically:YES
+                                 encoding:4
+                                    error:NULL];
+    }
+    else {
+    }
+}
+
+- (IBAction)readFromFile:(id)sender {
+    NSOpenPanel *openPanel = [NSOpenPanel openPanel];
+    NSArray *allowedFileTypes =
+      [NSArray arrayWithObjects:@"txt",@"'TEXT'",nil];
+    [openPanel setAllowedFileTypes:allowedFileTypes];
+    NSInteger pressedButton = [openPanel runModal];
+    if(pressedButton == NSOKButton)
+    {
+      NSURL *filePath = [openPanel URL];
+      NSString *text =
+        [NSString stringWithContentsOfFile:
+                    [[filePath absoluteString] substringFromIndex:7]
+                                  encoding:NSUTF8StringEncoding
+                                     error:nil];
+      _inputTextArea.string = text;
+    }
+    else {
+    }
+}
+
 @end

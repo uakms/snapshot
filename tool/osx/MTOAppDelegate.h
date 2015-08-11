@@ -29,4 +29,7 @@
 - (IBAction)OldToNew:(id)sender;
 - (IBAction)NewToOld:(id)sender;
 
+- (IBAction)writeToFile:(id)sender;
+- (IBAction)readFromFile:(id)sender;
+
 @end
