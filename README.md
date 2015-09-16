@@ -1,5 +1,5 @@
 # 笑い方
-こちらの[記事](http://nlab.herokuapp.com/tech/2015/08/08/Benchmarking.html)の付録です。それぞれのスクリプトは短かいので、実際に動作をさせなくてもスクリプトを読んだだけで脳内実行・デバッグ・リファクタリング・クリティカルパスの発見ができてしまうのではありませんか？
+こちらの[記事](http://sci.hateblo.jp/entry/Benchmarking2)の付録です。それぞれのスクリプトは短かいので、実際に動作をさせなくてもスクリプトを読んだだけで脳内実行・デバッグ・リファクタリング・クリティカルパスの発見ができてしまうのではありませんか？
 
 ## Emacs での利用
 25.0.50 で動作を確認しています。`.emacs.d/init.el` に下記を追記します。
@@ -17,7 +17,7 @@
 実はブラグイン形式の [emacs-mto](http://github.com/nakinor/emacs-mto) というものを作成していますが停滞しています。
 
 ## Vim での利用
-7.4.812 で動作を確認しています。`.vimrc` に下記を追記します。
+7.4.871 で動作を確認しています。`.vimrc` に下記を追記します。
 
      let mto_dir = '/path/to/snapshot/dict'
      let mto_color_flag = 1                            " 0: off, 1: on
@@ -27,7 +27,7 @@
 
 この `README.md` を開いてから `:call MtoReplaceKanaTrad()` を実行します。 
 
-実はブラグイン形式の [vim-mto](http://github.com/nakinor/vim-mto) というものを作成していますが停滞しています。何かパスの解決なのか、変数のスコープが変なのか、ぜんぜん動かないんだわコレ。
+実はブラグイン形式の [vim-mto](http://github.com/nakinor/vim-mto) というものを作成していますが停滞しています。
 
 ## その他のスクリプトでの利用
 カレントディレクトリが snapshot であるとします。
@@ -38,7 +38,7 @@
     clisp tool/mto-clisp.lisp tradkana README.md
 
 ### SBCL
-1.2.14.57 で動作を確認しています。ライブラリの cl-ppcre-2.0.7 が必要です。
+1.2.15.57 で動作を確認しています。ライブラリの cl-ppcre-2.0.7 が必要です。
 
     sbcl --script tool/mto-sbcl.lisp tradkana README.md
 
@@ -53,12 +53,12 @@
     perl tool/mto.pl tradkana README.md
 
 ### Python3
-3.4.3 で動作確を認しています。
+3.5.0 で動作確を認しています。
 
     python3 tool/mto.py tradkana README.md
 
 ### Ruby
-2.3.0dev で動作を確認しています。また、mruby でも動作しますが、`mruby-io` と `mruby-regexp-pcre` もしくは `mruby-onig-regexp` を組み込んでビルドしておいてください。
+2.3.0dev で動作を確認しています。また、mruby でも動作しますが、`mruby-io` と、 `mruby-regexp-pcre` もしくは `mruby-onig-regexp` を組み込んでビルドしておいてください。
 
     ruby tool/mto.rb tradkana README.md
     mruby tool/mto.rb tradkana README.md
@@ -69,7 +69,7 @@
     gosh tool/mto.scm tradkana README.md
 
 ### Go
-1.4.2 で動作を確認しています。辞書へのパスを環境変数から探すので、`export MTODIR="/Users/path/to/snapshot"` 等で `MTODIR` を設定しておいてください。
+1.5.1 で動作を確認しています。辞書へのパスを環境変数から探すので、`export MTODIR="/Users/path/to/snapshot"` 等で `MTODIR` を設定しておいてください。
 
     go run tool/mto.go tradkana README.md
 
