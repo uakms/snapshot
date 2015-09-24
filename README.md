@@ -83,12 +83,18 @@ momo 4.0.0 で動作を確認しています。辞書へのパスを環境変数
 
     mcs tool/mto-mono.cs
     mono mto-mono.exe tradkana README.md
-     
+
 ### Objective-C
 Xcode 6.2 で動作を確認しています。辞書へのパスを環境変数から探すので、`export MTODIR="/Users/path/to/snapshot"` 等で `MTODIR` を設定しておいてください。
 
     clang -framework Foundation tool/osx/main.m tool/osx/MTODict.m -o mto-objc
     ./mto-objc tradkana README.md
+
+### C
+code 6.2 で動作を確認しています。辞書へのパスを環境変数から探すので、`export MTODIR="/Users/path/to/snapshot"` 等で `MTODIR` を設定しておいてください。
+
+    cc mto.c -o mto
+    ./mto tradkana README.md
 
 ## その他のスクリプトについて
 ユーティリティみたいなやつ。
