@@ -1,6 +1,6 @@
 /* Author: nakinor
  * Created: 2015-09-22
- * Revised: 2015-09-24
+ * Revised: 2015-09-26
  */
 
 #include <stdio.h>
@@ -14,7 +14,7 @@
                        /* 一行 80x3 で 256 バイトあれば十分かな？ */
 #define TMP_LINE 128   /* 備考を除いた要素になりうる部分のバイト数 */
 
-#define MAX_STRG 1024  /* 開いたファイルをどのバイト数ずつ読み込むのか */
+#define MAX_STRG 4096  /* 開いたファイルをどのバイト数ずつ読み込むのか */
 
 char innerDict[MAX_ELEM][2][64];
 int elemSize = 0;      /* 内部辞書の要素数を保持する変数 */
@@ -108,15 +108,7 @@ int createDict(char *jisyo) {
   regex_t clpReg;
   regcomp(&clpReg, commentLinePattern, REG_EXTENDED|REG_NOSUB);
 
-  /* 備考部分をマッチさせるための正規表現を生成 */
-  static char *notePattern = "[\t\n\f\r ]+;.*";
-  regex_t npReg;
-  regcomp(&npReg, notePattern, REG_EXTENDED);
-
-  regmatch_t match[1]; /* マッチした際の情報を入れておく構造体(1個だけ) */
-  int matchElem = sizeof match / sizeof match[0]; /* 配列の数を計算しておく*/
-
-  if ((fp = fopen(jisyo, "rb")) == NULL) {
+  if ((fp = fopen(jisyo, "r")) == NULL) {
     printf("辞書ファイルをひらけなかった（´・ω・｀）\n");
     exit(EXIT_FAILURE);
   }
@@ -124,37 +116,21 @@ int createDict(char *jisyo) {
   while (fgets(str, MAX_LINE, fp) != NULL) {
     /* コメント行かどうか調べる */
     if (regexec(&clpReg, str, 0, NULL, 0) == REG_NOMATCH) {
-      /* コメントでなければさらに備考があるかどうか調べる */
-      if (regexec(&npReg, str, matchElem, match, 0) == REG_NOMATCH) {
-        /* 備考がなければここの処理をする */
-        sscanf(str, "%s /%s",
-               &*innerDict[elemSize][0],  /* &* を付けるとうまくいくぞ */
-               &*innerDict[elemSize][1]);
-        elemSize++;
-      }
-      else {
-        /* 備考があればここの処理をする */
-        char tmp[TMP_LINE]; /* 例えば「笑う /笑ふ」を代入しておく変数を用意 */
-        strncpy(tmp, str, match[0].rm_so); /* 正規表現で見付かったところまで */
-        tmp[match[0].rm_so] = '\0';        /* tmp にコピーしお尻に'\0'を付加 */
-        sscanf(tmp, "%s /%s",              /* 改行は気にしなくて良い？ */
-               &*innerDict[elemSize][0],
-               &*innerDict[elemSize][1]);
-        elemSize++;
-      }
+      /* コメント行でなければ配列に入れて辞書にする */
+      sscanf(str, "%s /%s",
+             &*innerDict[elemSize][0],  /* &* を付けるとうまくいくぞ */
+             &*innerDict[elemSize][1]);
+      elemSize++;
     }
-    else {
-      /* コメント行に対しては何もしない。if 文対応のため else は書いておく */
-    }
-  } /* while 文の終わり */
+  }
   fclose(fp);         /* ファイルを閉じる */
   regfree(&clpReg);   /* 正規表現を開放 */
-  regfree(&npReg);    /* 正規表現を開放 */
 
 #ifdef PRINT_DICT
   for (int i = 0; i < elemSize; ++i) {
     printf("%s %s\n", innerDict[i][0], innerDict[i][1]);
   }
+  printf("%d\n", elemSize);
 #endif
 
   return 0;  /* 配列を返すわけではないので。グローバル配列だもん */

@@ -17,7 +17,7 @@
 実はブラグイン形式の [emacs-mto](http://github.com/nakinor/emacs-mto) というものを作成していますが停滞しています。
 
 ## Vim での利用
-7.4.871 で動作を確認しています。`.vimrc` に下記を追記します。
+7.4.884 で動作を確認しています。`.vimrc` に下記を追記します。
 
      let mto_dir = '/path/to/snapshot/dict'
      let mto_color_flag = 1                            " 0: off, 1: on
