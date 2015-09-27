@@ -1,6 +1,6 @@
 /* Author: nakinor
  * Created: 2015-09-22
- * Revised: 2015-09-26
+ * Revised: 2015-09-27
  */
 
 #include <stdio.h>
@@ -71,7 +71,8 @@ int strCdrReplace(char *ifile) {
     exit(EXIT_FAILURE);
   }
   while (fgets(str, MAX_STRG, fp) != NULL) {
-    for (int i = 0; i < elemSize; ++i) {
+    int i;
+    for (i = 0; i < elemSize; ++i) {
       strgsub(str, innerDict[i][1], innerDict[i][0]);
     }
     printf("%s", str);
@@ -89,7 +90,8 @@ int strCarReplace(char *ifile) {
     exit(EXIT_FAILURE);
   }
   while (fgets(str, MAX_STRG, fp) != NULL) {
-    for (int i = 0; i < elemSize; ++i) {
+    int i;
+    for (i = 0; i < elemSize; ++i) {
       strgsub(str, innerDict[i][0], innerDict[i][1]);
     }
     printf("%s", str);
