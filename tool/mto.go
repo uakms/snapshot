@@ -1,6 +1,6 @@
 /* Author: nakinor
  * Created: 2013-12-06
- * Revised: 2013-12-15
+ * Revised: 2015-09-28
  */
 
 package main
@@ -9,15 +9,15 @@ import (
 	"bufio"
 	"fmt"
 	"io/ioutil"
+	"os"
 	"regexp"
 	"strings"
-	"os"
 )
 
 var (
-	kanajisyo string = os.Getenv("MTODIR") + "/dict/kana-jisyo"
+	kanajisyo  string = os.Getenv("MTODIR") + "/dict/kana-jisyo"
 	kanjijisyo string = os.Getenv("MTODIR") + "/dict/kanji-jisyo"
-	dicarr = [][]string{}
+	dicarr            = [][]string{}
 )
 
 func DictCreator(jisyo string) {
@@ -42,6 +42,9 @@ func StringCarReplacer(ifile string) {
 	}
 	str := string(content)
 	for _, element := range dicarr {
+		//tmp := strings.Split(str, element[0])
+		//str = strings.Join(tmp, element[1])
+		// どっちも変わらんのう
 		str = strings.Replace(str, element[0], element[1], -1)
 	}
 	fmt.Printf("%s", str)
@@ -87,26 +90,26 @@ func UsagePrinter() {
 }
 
 func ArgumentParser() {
-	if len(os.Args) == 1 || len(os.Args) >=4 {
+	if len(os.Args) == 1 || len(os.Args) >= 4 {
 		UsagePrinter()
 		return
 	}
 
 	if len(os.Args) == 2 {
 		switch {
-		case os.Args[1] == "tradkana" :
+		case os.Args[1] == "tradkana":
 			DictCreator(kanajisyo)
 			StdinStringCarReplacer()
 			return
-		case os.Args[1] == "modernkana" :
+		case os.Args[1] == "modernkana":
 			DictCreator(kanajisyo)
 			StdinStringCdrReplacer()
 			return
-		case os.Args[1] == "oldkanji" :
+		case os.Args[1] == "oldkanji":
 			DictCreator(kanjijisyo)
 			StdinStringCarReplacer()
 			return
-		case os.Args[1] == "newkanji" :
+		case os.Args[1] == "newkanji":
 			DictCreator(kanajisyo)
 			StdinStringCdrReplacer()
 			return
@@ -117,19 +120,19 @@ func ArgumentParser() {
 
 	if len(os.Args) == 3 {
 		switch {
-		case os.Args[1] == "tradkana" :
+		case os.Args[1] == "tradkana":
 			DictCreator(kanajisyo)
 			StringCarReplacer(os.Args[2])
 			return
-		case os.Args[1] == "modernkana" :
+		case os.Args[1] == "modernkana":
 			DictCreator(kanajisyo)
 			StringCdrReplacer(os.Args[2])
 			return
-		case os.Args[1] == "oldkanji" :
+		case os.Args[1] == "oldkanji":
 			DictCreator(kanjijisyo)
 			StringCarReplacer(os.Args[2])
 			return
-		case os.Args[1] == "newkanji" :
+		case os.Args[1] == "newkanji":
 			DictCreator(kanajisyo)
 			StringCdrReplacer(os.Args[2])
 			return
