@@ -2,32 +2,10 @@
 こちらの[記事](http://sci.hateblo.jp/entry/Benchmarking2)の付録です。それぞれのスクリプトは短かいので、実際に動作をさせなくてもスクリプトを読んだだけで脳内実行・デバッグ・リファクタリング・クリティカルパスの発見ができてしまうのではありませんか？
 
 ## Emacs での利用
-25.0.50 で動作を確認しています。`.emacs.d/init.el` に下記を追記します。
-
-     (setq mto-dir "/path/to/snapshot/dict")
-     (add-to-list 'load-path "/path/to/snapshot/tool/emacs")
-     ;options
-     ;(setq mto-menu-lang 'ja) ; or 'en
-     ;(setq mto-colorize-word t) ; or nil
-     ;(mto-global-keymaps t) ; or nil
-     (require 'mto)
-
-この `README.md` を開いてから `M-x mto-trad-orth` を実行します。
-
-実はブラグイン形式の [emacs-mto](http://github.com/nakinor/emacs-mto) というものを作成していますが停滞しています。
+25.0.50 で動作を確認しています。ブラグイン形式の [emacs-mto](http://github.com/nakinor/emacs-mto) を使います。
 
 ## Vim での利用
-7.4.884 で動作を確認しています。`.vimrc` に下記を追記します。
-
-     let mto_dir = '/path/to/snapshot/dict'
-     let mto_color_flag = 1                            " 0: off, 1: on
-     source /path/to/snapshot/tool/vim/mto.vim         " pure vim script
-     let mto_script = '/path/to/snapshot/tool/mto.py'  " scm, lua, pl, py, rb
-     source /path/to/snapshot/tool/vim/keymaps.vim     " use external script
-
-この `README.md` を開いてから `:call MtoReplaceKanaTrad()` を実行します。 
-
-実はブラグイン形式の [vim-mto](http://github.com/nakinor/vim-mto) というものを作成していますが停滞しています。
+7.4.889 で動作を確認しています。ブラグイン形式の [vim-mto](http://github.com/nakinor/vim-mto) を使います。
 
 ## その他のスクリプトでの利用
 カレントディレクトリが snapshot であるとします。
@@ -38,7 +16,7 @@
     clisp tool/mto-clisp.lisp tradkana README.md
 
 ### SBCL
-1.2.15.57 で動作を確認しています。ライブラリの cl-ppcre-2.0.7 が必要です。
+1.2.16.12 で動作を確認しています。ライブラリの cl-ppcre-2.0.7 が必要です。
 
     sbcl --script tool/mto-sbcl.lisp tradkana README.md
 
