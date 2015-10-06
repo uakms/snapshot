@@ -1,7 +1,7 @@
 ;-*- coding: utf-8 -*-
 ; Author: nakinor
 ; Created: 2013-11-23
-; Revised: 2013-11-23
+; Revised: 2015-10-06
 
 ; Common Lisp での実装にチャレンジ
 ; SBCL 向け
@@ -10,7 +10,7 @@
 
 ; ライブラリの読み込み(これが無いと検索・置換ができない)
 (load "~/quicklisp/setup.lisp")
-(ql:quickload :cl-ppcre)
+(ql:quickload :cl-ppcre :silent t)
 
 ; パスの取得
 (defparameter *scriptname* cl:*load-truename*)
