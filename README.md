@@ -2,10 +2,10 @@
 こちらの[記事](http://sci.hateblo.jp/entry/Benchmarking2)の付録です。それぞれのスクリプトは短かいので、実際に動作をさせなくてもスクリプトを読んだだけで脳内実行・デバッグ・リファクタリング・クリティカルパスの発見ができてしまうのではありませんか？
 
 ## Emacs での利用
-25.0.50 で動作を確認しています。ブラグイン形式の [emacs-mto](http://github.com/nakinor/emacs-mto) を使います。
+25.1.50 で動作を確認しています。ブラグイン形式の [emacs-mto](http://github.com/nakinor/emacs-mto) を使います。
 
 ## Vim での利用
-7.4.889 で動作を確認しています。ブラグイン形式の [vim-mto](http://github.com/nakinor/vim-mto) を使います。
+7.4.936 で動作を確認しています。ブラグイン形式の [vim-mto](http://github.com/nakinor/vim-mto) を使います。
 
 ## その他のスクリプトでの利用
 カレントディレクトリが snapshot であるとします。
@@ -16,7 +16,7 @@
     clisp tool/mto-clisp.lisp tradkana README.md
 
 ### SBCL
-1.2.16.12 で動作を確認しています。ライブラリの cl-ppcre-2.0.7 が必要です。
+1.3.0.210 で動作を確認しています。ライブラリの cl-ppcre-2.0.11 が必要です。
 
     sbcl --script tool/mto-sbcl.lisp tradkana README.md
 
@@ -26,7 +26,7 @@
     lua tool/mto.lua tradkana README.md
 
 ### Perl5
-5.16.2 で動作を確認しています。
+5.18.2 で動作を確認しています。
 
     perl tool/mto.pl tradkana README.md
 
@@ -57,22 +57,27 @@
     ./mto tradkana README.md
 
 ### CSharp
-momo 4.0.0 で動作を確認しています。辞書へのパスを環境変数から探すので、`export MTODIR="/Users/path/to/snapshot"` 等で `MTODIR` を設定しておいてください。
+momo 4.0.5 で動作を確認しています。辞書へのパスを環境変数から探すので、`export MTODIR="/Users/path/to/snapshot"` 等で `MTODIR` を設定しておいてください。
 
     mcs tool/mto-mono.cs
     mono mto-mono.exe tradkana README.md
 
 ### Objective-C
-Xcode 6.2 で動作を確認しています。辞書へのパスを環境変数から探すので、`export MTODIR="/Users/path/to/snapshot"` 等で `MTODIR` を設定しておいてください。
+Xcode 7.1 で動作を確認しています。辞書へのパスを環境変数から探すので、`export MTODIR="/Users/path/to/snapshot"` 等で `MTODIR` を設定しておいてください。
 
     clang -framework Foundation tool/osx/main.m tool/osx/MTODict.m -o mto-objc
     ./mto-objc tradkana README.md
 
 ### C
-code 6.2 で動作を確認しています。辞書へのパスを環境変数から探すので、`export MTODIR="/Users/path/to/snapshot"` 等で `MTODIR` を設定しておいてください。
+Xcode 7.1 で動作を確認しています。辞書へのパスを環境変数から探すので、`export MTODIR="/Users/path/to/snapshot"` 等で `MTODIR` を設定しておいてください。
 
     cc mto.c -o mto
     ./mto tradkana README.md
+
+### Node.js
+4.2.2 で動作を確認しています。辞書へのパスを環境変数から探すので、`export MTODIR="/Users/path/to/snapshot"` 等で `MTODIR` を設定しておいてください。
+
+    node tool/mto-node.js tradkana README.md
 
 ## その他のスクリプトについて
 ユーティリティみたいなやつ。
