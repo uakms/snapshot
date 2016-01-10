@@ -5,7 +5,7 @@
 25.1.50 で動作を確認しています。ブラグイン形式の [emacs-mto](http://github.com/nakinor/emacs-mto) を使います。
 
 ## Vim での利用
-7.4.979 で動作を確認しています。ブラグイン形式の [vim-mto](http://github.com/nakinor/vim-mto) を使います。
+7.4.1073 で動作を確認しています。ブラグイン形式の [vim-mto](http://github.com/nakinor/vim-mto) を使います。
 
 ## その他のスクリプトでの利用
 カレントディレクトリが snapshot であるとします。
@@ -16,7 +16,7 @@
     clisp tool/mto-clisp.lisp tradkana README.md
 
 ### SBCL
-1.3.1.142 で動作を確認しています。ライブラリの cl-ppcre-2.0.11 が必要です。
+1.3.1.192 で動作を確認しています。ライブラリの cl-ppcre-2.0.11 が必要です。
 
     sbcl --script tool/mto-sbcl.lisp tradkana README.md
 
@@ -75,7 +75,7 @@ Xcode 7.2 で動作を確認しています。辞書へのパスを環境変数�
     ./mto tradkana README.md
 
 ### Node.js
-4.2.3 で動作を確認しています。辞書へのパスを環境変数から探すので、`export MTODIR="/Users/path/to/snapshot"` 等で `MTODIR` を設定しておいてください。
+4.2.4 で動作を確認しています。辞書へのパスを環境変数から探すので、`export MTODIR="/Users/path/to/snapshot"` 等で `MTODIR` を設定しておいてください。
 
     node tool/mto-node.js tradkana README.md
 
