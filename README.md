@@ -5,7 +5,7 @@
 25.1.50 で動作を確認しています。ブラグイン形式の [emacs-mto](http://github.com/nakinor/emacs-mto) を使います。
 
 ## Vim での利用
-7.4.1073 で動作を確認しています。ブラグイン形式の [vim-mto](http://github.com/nakinor/vim-mto) を使います。
+7.4.1089 で動作を確認しています。ブラグイン形式の [vim-mto](http://github.com/nakinor/vim-mto) を使います。
 
 ## その他のスクリプトでの利用
 カレントディレクトリが snapshot であるとします。
@@ -16,7 +16,7 @@
     clisp tool/mto-clisp.lisp tradkana README.md
 
 ### SBCL
-1.3.1.192 で動作を確認しています。ライブラリの cl-ppcre-2.0.11 が必要です。
+1.3.1.222 で動作を確認しています。ライブラリの cl-ppcre-2.0.11 が必要です。
 
     sbcl --script tool/mto-sbcl.lisp tradkana README.md
 
