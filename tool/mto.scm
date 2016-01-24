@@ -1,21 +1,20 @@
-#!/usr/local/bin/gosh
 ;;-*- coding: utf-8 -*-
 ;;
 ;; Author: nakinor
 ;; Created: 2011-10-12
-;; Revised: 2015-08-10
+;; Revised: 2016-01-24
 ;;
 ; Scheme でも mto を実装してみるプロジェクト
 ; Gauche で用意されているライブラリを利用しているので gosh 専用です
 
-; パスの取得のために必要(decompose-path 等を利用する)
-(use file.util)
+(use file.util) ; file-is-readable? 等を使う
+(use srfi-98) ; sys-getenv ではなく get-environment-variable を使う
 
-; 読み込む辞書ファイルへのパスは絶対パスで記述する方がいいかも
+; 読み込む辞書ファイルへのパス(環境変数を利用)
 (define kanajisyo
-  (string-append (decompose-path *program-name*) "/../dict/kana-jisyo"))
+  (string-append (get-environment-variable "MTODIR") "/dict/kana-jisyo"))
 (define kanjijisyo
-  (string-append (decompose-path *program-name*) "/../dict/kanji-jisyo"))
+  (string-append (get-environment-variable "MTODIR") "/dict/kanji-jisyo"))
 
 ; 作成したコンスセル集(連想リスト)を収納するための空リストを用意
 (define dic-tmp '()) ;できれば使いたくないのだけど局所変数がわからないので

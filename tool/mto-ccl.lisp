@@ -1,28 +1,24 @@
 ;-*- coding: utf-8 -*-
 ; Author: nakinor
-; Created: 2013-11-23
+; Created: 2016-01-24
 ; Revised: 2016-01-24
 
 ; Common Lisp での実装にチャレンジ
-; SBCL 向け
+; Clozure CL 向け
 ;
-; 辞書へのパスを環境変数を利用して取得するようにした
+; CCL では環境変数を利用し、またコンパイルするようにした。
+; というか、スクリプト的に使うにはどうすればいいんだ？
 ;
 ; Usage:
-;   sbcl --script  mto-sbcl.lisp options inputfile
-;
-;
-; バイナリにコンパイルする場合はバイナリにする部分のコメントを外して
-;
-; sbcl --noinform --no-sysinit --no-userinit --load mto-sbcl.lisp
-; ./mto-sbcl options inputfile
+;   ccl -l mto-ccl.lisp
+;   ./mto-ccl options inputfile
 
 ; ライブラリの読み込み(これが無いと検索・置換ができない)
 (load "~/quicklisp/setup.lisp")
 (ql:quickload :cl-ppcre :silent t)
 
 ; パスの取得
-(defparameter *mtorootdir* (sb-ext:posix-getenv "MTODIR"))
+(defparameter *mtorootdir* (getenv "MTODIR"))
 
 ; 辞書ファイルを指定
 (defparameter *kana-jisyo*
@@ -96,40 +92,40 @@
 ; 条件分岐(ファイルからの変換)
 (defun replace-from-file ()
   (cond
-   ((equal "tradkana" (cadr sb-ext:*posix-argv*))
+   ((equal "tradkana" (cadr *command-line-argument-list*))
     (make-jisyo *kana-jisyo*)
-    (mto-replace-car (caddr sb-ext:*posix-argv*)))
-   ((equal "modernkana" (cadr sb-ext:*posix-argv*))
+    (mto-replace-car (caddr *command-line-argument-list*)))
+   ((equal "modernkana" (cadr *command-line-argument-list*))
     (make-jisyo *kana-jisyo*)
-    (mto-replace-cdr (caddr sb-ext:*posix-argv*)))
-   ((equal "oldkanji" (cadr sb-ext:*posix-argv*))
+    (mto-replace-cdr (caddr *command-line-argument-list*)))
+   ((equal "oldkanji" (cadr *command-line-argument-list*))
     (make-jisyo *kanji-jisyo*)
-    (mto-replace-car (caddr sb-ext:*posix-argv*)))
-   ((equal "newkanji" (cadr sb-ext:*posix-argv*))
+    (mto-replace-car (caddr *command-line-argument-list*)))
+   ((equal "newkanji" (cadr *command-line-argument-list*))
     (make-jisyo *kanji-jisyo*)
-    (mto-replace-cdr (caddr sb-ext:*posix-argv*)))
+    (mto-replace-cdr (caddr *command-line-argument-list*)))
    (t (format t "もしかしてオプションが違うかも？~%"))))
 
 ; 条件分岐(標準入力からの変換)
 (defun replace-from-stdin ()
   (cond
-   ((equal "tradkana" (cadr sb-ext:*posix-argv*))
+   ((equal "tradkana" (cadr *command-line-argument-list*))
     (make-jisyo *kana-jisyo*)
     (mto-replace-stdin-car))
-   ((equal "modernkana" (cadr sb-ext:*posix-argv*))
+   ((equal "modernkana" (cadr *command-line-argument-list*))
     (make-jisyo *kana-jisyo*)
     (mto-replace-stdin-cdr))
-   ((equal "oldkanji" (cadr sb-ext:*posix-argv*))
+   ((equal "oldkanji" (cadr *command-line-argument-list*))
     (make-jisyo *kanji-jisyo*)
     (mto-replace-stdin-car))
-   ((equal "newkanji" (cadr sb-ext:*posix-argv*))
+   ((equal "newkanji" (cadr *command-line-argument-list*))
     (make-jisyo *kanji-jisyo*)
     (mto-replace-stdin-cdr))
    (t (format t "もしかしてオプションが違うかも？~%"))))
 
 ; 使い方説明
 (defun mto-usage ()
-  (format t "Usage: sbcl mto-sbcl.lisp options inputfile
+  (format t "Usage: ./mto-ccl options inputfile
 options:
   tradkana    歴史的仮名使いに変換します
   modernkana  現代仮名使いに変換します
@@ -138,16 +134,16 @@ options:
 
 ; メイン。まずはここからスタート
 (defun main ()
-  (cond ((< 3 (length sb-ext:*posix-argv*)) (mto-usage))
-        ((equal 3 (length sb-ext:*posix-argv*))
+  (cond ((< 3 (length *command-line-argument-list*)) (mto-usage))
+        ((equal 3 (length *command-line-argument-list*))
          (replace-from-file))
-        ((equal 2 (length sb-ext:*posix-argv*))
+        ((equal 2 (length *command-line-argument-list*))
          (replace-from-stdin))
         (t (mto-usage))))
 
-; バイナリにする場合はこの部分のコメントを外して (main) をコメントアウトする
-;; (sb-ext:save-lisp-and-die "mto-sbcl"
-;;                           :toplevel #'main
-;;                           :executable t)
+(ccl:save-application
+ "mto-ccl"
+ :toplevel-function #'main
+ :prepend-kernel t)
 
-(main)
+;(main)
