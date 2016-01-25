@@ -146,8 +146,8 @@ options:
         (t (mto-usage))))
 
 ; バイナリにする場合はこの部分のコメントを外して (main) をコメントアウトする
-;; (sb-ext:save-lisp-and-die "mto-sbcl"
-;;                           :toplevel #'main
-;;                           :executable t)
+; (sb-ext:save-lisp-and-die "mto-sbcl"
+;                           :toplevel #'main
+;                           :executable t)
 
 (main)

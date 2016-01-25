@@ -3,12 +3,12 @@
 #
 # Author: nakinor
 # Created: 2011-12-18
-# Revised: 2012-07-24
+# Revised: 2016-01-24
 
 # 辞書の場所を絶対パスで指定する
 use FindBin;
-my $kana_jisyo = "$FindBin::Bin/../dict/kana-jisyo";
-my $kanji_jisyo = "$FindBin::Bin/../dict/kanji-jisyo";
+my $kana_jisyo  = "$ENV{MTODIR}/dict/kana-jisyo";
+my $kanji_jisyo = "$ENV{MTODIR}/dict/kanji-jisyo";
 
 # 配列を用意
 @dict_arr = ();

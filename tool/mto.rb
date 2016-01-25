@@ -3,11 +3,11 @@
 #
 # Author: nakinor
 # Created: 2011-10-11
-# Revised: 2014-06-15
+# Revised: 2016-01-24
 
 # デフォルトの辞書の場所(絶対パスで指定した方が良い)
-kana_jisyo  = File.dirname(__FILE__) + "/../dict/kana-jisyo"
-kanji_jisyo = File.dirname(__FILE__) + "/../dict/kanji-jisyo"
+kana_jisyo  = ENV['MTODIR'] + "/dict/kana-jisyo"
+kanji_jisyo = ENV['MTODIR'] + "/dict/kanji-jisyo"
 
 # 変換を無視すべきクオートの種類
 QUOTE_START_REGEXP = '<q>|<blockquote>|begin{quote}|begin{quotation}'

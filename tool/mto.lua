@@ -2,18 +2,12 @@
 --[[
   Author: nakinor
   Created: 2011-12-22
-  Revised: 2012-06-06
+  Revised: 2016-01-24
 -- ]]
 
-apath = os.getenv("PWD") .. "/" -- 自分の現在地
-bpath = arg[0]                  -- Lua に渡した実行スクリプトへのパス
-cpath = string.gsub(bpath, apath, "") -- 引き算
-dpath = apath .. cpath                -- 足し算
-epath = string.gsub(dpath, "[%w_%.%-]-$", "") -- スクリプト名を削除
-
 -- 辞書の場所を指定(絶対パスで指定する方がいい)
-kana_jisyo = epath .. "../dict/kana-jisyo"
-kanji_jisyo = epath .. "../dict/kanji-jisyo"
+kana_jisyo = os.getenv("MTODIR") .. "/dict/kana-jisyo"
+kanji_jisyo = os.getenv("MTODIR") .. "/dict/kanji-jisyo"
 
 -- テーブルを用意
 dic_table = {}

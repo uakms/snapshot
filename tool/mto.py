@@ -3,7 +3,7 @@
 #
 # Author: nakinor
 # Created: 2011-10-18
-# Revised: 2014-03-23
+# Revised: 2016-01-24
 
 # コマンドラインから引数を得るで
 import os
@@ -16,8 +16,8 @@ sys.stdin  = io.TextIOWrapper(sys.stdin.buffer, encoding='utf-8')
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 
 # 辞書の場所を絶対パスで指定するで
-kana_jisyo  = os.path.dirname(os.path.abspath(__file__)) + "/../dict/kana-jisyo"
-kanji_jisyo = os.path.dirname(os.path.abspath(__file__)) + "/../dict/kanji-jisyo"
+kana_jisyo  = os.environ.get("MTODIR") + "/dict/kana-jisyo"
+kanji_jisyo = os.environ.get("MTODIR") + "/dict/kanji-jisyo"
 
 # 変換を無視すべきクオートの種類
 beg_pattern = '<q>|<blockquote>|begin{quote}|begin{quotation}'
