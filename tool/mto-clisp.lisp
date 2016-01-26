@@ -2,7 +2,7 @@
 ;-*- coding: utf-8 -*-
 ; Author: nakinor
 ; Created: 2012-06-05
-; Revised: 2013-11-23
+; Revised: 2016-01-26
 
 ; Common Lisp での実装にチャレンジ
 ; asdf と cl-ppcre ライブラリが必要で、たぶん clisp 専用
@@ -17,17 +17,11 @@
 (ql:quickload :cl-ppcre)
 
 ; パスの取得
-(setq apath (format nil "/~{~a~^/~}/"
-                    (cdr (pathname-directory (truename "./")))))
-(setq bpath (aref (ext:argv) 7))
-(setq cpath (cl-ppcre:regex-replace apath bpath ""))
-(setq dpath (concatenate 'string apath cpath))
-(setq epath (format nil "/~{~a~^/~}/"
-                    (cdr (pathname-directory dpath))))
+(setq mtorootdir (ext:getenv "MTODIR"))
 
 ; 辞書ファイルを指定
-(setq kana-jisyo (concatenate 'string epath "../dict/kana-jisyo"))
-(setq kanji-jisyo (concatenate 'string epath "../dict/kanji-jisyo"))
+(setq kana-jisyo (concatenate 'string mtorootdir "/dict/kana-jisyo"))
+(setq kanji-jisyo (concatenate 'string mtorootdir "/dict/kanji-jisyo"))
 
 ; 連想リストを入れるための空リスト
 (setq *dic-tmp* '())

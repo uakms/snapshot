@@ -5,36 +5,36 @@
 25.1.50 で動作を確認しています。ブラグイン形式の [emacs-mto](http://github.com/nakinor/emacs-mto) を使います。
 
 ## Vim での利用
-7.4.1174 で動作を確認しています。ブラグイン形式の [vim-mto](http://github.com/nakinor/vim-mto) を使います。
+7.4.1180 で動作を確認しています。ブラグイン形式の [vim-mto](http://github.com/nakinor/vim-mto) を使います。
 
 ## その他のスクリプトでの利用
-カレントディレクトリが snapshot であるとします。
+辞書へのパスを環境変数から探すので、`export MTODIR="/Users/path/to/snapshot"` 等で `MTODIR` を設定しておいてください。
+
+環境変数が適切に設定されていればどこに置いても動くはずですが、とりあえず、下記のコマンドはカレントディレクトリが snapshot であるとします。
 
 ### Python3
-3.5.1 で動作確を認しています。辞書へのパスを環境変数から探すので、`export MTODIR="/Users/path/to/snapshot"` 等で `MTODIR` を設定しておいてください。
+3.5.1 で動作確を認しています。
 
     python3 tool/mto.py tradkana README.md
 
 ### Ruby
-2.4.0dev で動作を確認しています。辞書へのパスを環境変数から探すので、`export MTODIR="/Users/path/to/snapshot"` 等で `MTODIR` を設定しておいてください。
-
-また、mruby でも動作しますが、`mruby-io` と `mruby-env`、そして `mruby-regexp-pcre` もしくは `mruby-onig-regexp` を組み込んでビルドしておいてください。
+2.4.0dev で動作を確認しています。また、mruby でも動作しますが、`mruby-io` と `mruby-env`、そして `mruby-regexp-pcre` もしくは `mruby-onig-regexp` を組み込んでビルドしておいてください。
 
     ruby tool/mto.rb tradkana README.md
     mruby tool/mto.rb tradkana README.md
 
 ### Perl5
-5.18.2 で動作を確認しています。辞書へのパスを環境変数から探すので、`export MTODIR="/Users/path/to/snapshot"` 等で `MTODIR` を設定しておいてください。
+5.18.2 で動作を確認しています。
 
     perl tool/mto.pl tradkana README.md
 
 ### Lua
-5.3.2 で動作を確認しています。辞書へのパスを環境変数から探すので、`export MTODIR="/Users/path/to/snapshot"` 等で `MTODIR` を設定しておいてください。
+5.3.2 で動作を確認しています。
 
     lua tool/mto.lua tradkana README.md
 
 ### Go
-1.5.3 で動作を確認しています。辞書へのパスを環境変数から探すので、`export MTODIR="/Users/path/to/snapshot"` 等で `MTODIR` を設定しておいてください。
+1.5.3 で動作を確認しています。
 
     go run tool/mto.go tradkana README.md
 
@@ -44,51 +44,52 @@
     ./mto tradkana README.md
 
 ### CSharp
-momo 4.2.1 で動作を確認しています。辞書へのパスを環境変数から探すので、`export MTODIR="/Users/path/to/snapshot"` 等で `MTODIR` を設定しておいてください。
+momo 4.2.1 で動作を確認しています。
 
     mcs tool/mto-mono.cs
     mono mto-mono.exe tradkana README.md
 
 ### Objective-C
-Xcode 7.2 で動作を確認しています。辞書へのパスを環境変数から探すので、`export MTODIR="/Users/path/to/snapshot"` 等で `MTODIR` を設定しておいてください。
+Xcode 7.2 で動作を確認しています。
 
     clang -framework Foundation tool/osx/main.m tool/osx/MTODict.m -o mto-objc
     ./mto-objc tradkana README.md
 
 ### C
-Xcode 7.2 で動作を確認しています。辞書へのパスを環境変数から探すので、`export MTODIR="/Users/path/to/snapshot"` 等で `MTODIR` を設定しておいてください。
+Xcode 7.2 で動作を確認しています。
 
     cc mto.c -o mto
     ./mto tradkana README.md
 
 ### Node.js
-4.2.6 で動作を確認しています。辞書へのパスを環境変数から探すので、`export MTODIR="/Users/path/to/snapshot"` 等で `MTODIR` を設定しておいてください。
+4.2.6 で動作を確認しています。
 
     node tool/mto-node.js tradkana README.md
 
 ### Gauche
-0.9.5_pre1 で動作を確認しています。辞書へのパスを環境変数から探すので、`export MTODIR="/Users/path/to/snapshot"` 等で `MTODIR` を設定しておいてください。
+0.9.5_pre1 で動作を確認しています。
 
     gosh tool/mto.scm tradkana README.md
 
 ### SBCL
-1.3.1.249 で動作を確認しています。ライブラリの cl-ppcre-2.0.11 が必要です。辞書へのパスを環境変数から探すので、`export MTODIR="/Users/path/to/snapshot"` 等で `MTODIR` を設定しておいてください。
+1.3.1.249 で動作を確認しています。ライブラリの cl-ppcre-2.0.11 が必要です。
 
     sbcl --script tool/mto-sbcl.lisp tradkana README.md
 
 ### Clozure CL
-1.10 で動作を確認しています。ライブラリの cl-ppcre-2.0.11 が必要です。辞書へのパスを環境変数から探すので、`export MTODIR="/Users/path/to/snapshot"` 等で `MTODIR` を設定しておいてください。
+1.10 で動作を確認しています。ライブラリの cl-ppcre-2.0.11 が必要です。
 
     dx86cl64 -l mto-ccl.lisp
     ./mto-ccl tradkana README.md
 
-### CLISP(obsolte)
-かつて 2.49 での動作を確認しましたが、現マシンでは clisp をビルドできないので確認していません。ライブラリの cl-ppcre-2.0.7 が必要です。
+### CLISP
+2.47 での動作を確認しました(Panther on iBook にて)。ライブラリの cl-ppcre-2.0.7 が必要です。
 
     clisp tool/mto-clisp.lisp tradkana README.md
 
 ## その他のスクリプトについて
-ユーティリティみたいなやつ。
+### Makefile
+Golang, C, C#, Objective-C, Clozure CL のようなコンパイル系のものをビルドするのが面倒なので作成しました。シェルスクリプトの方が良かったですね。
 
 ### conv.go
 辞書をチェックしたり数えたり JSON っぽく出力します。
