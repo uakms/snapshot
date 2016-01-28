@@ -3,15 +3,15 @@
 #
 # Author: nakinor
 # Created: 2014-03-20
-# Revised: 2015-04-12
+# Revised: 2016-01-28
 
 require 'open-uri'
 
 #MTODICT_SITE = "https://raw.githubusercontent.com/nakinor/mto/master"
-MTODICT_SITE = ENV['MTODIR']
-KANA_JISYO   = MTODICT_SITE + "/dict/kana-jisyo"
-KANJI_JISYO  = MTODICT_SITE + "/dict/kanji-jisyo"
-HANGEUL_JISYO  = MTODICT_SITE + "/dict/hangeul-jisyo"
+MTODICT_SITE = ENV['MTODIC']
+KANA_JISYO   = MTODICT_SITE + "/kana-jisyo"
+KANJI_JISYO  = MTODICT_SITE + "/kanji-jisyo"
+HANGEUL_JISYO  = MTODICT_SITE + "/hangeul-jisyo"
 
 def split_comment(string)
   return string.sub("[", "[\"").gsub(/\|/, "\", \"").sub("]", "\"]")

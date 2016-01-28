@@ -1,11 +1,11 @@
 /*
  * Author: nakinor
  * Created: 2015-11-08
- * Revised: 2015-11-23
+ * Revised: 2016-01-28
  */
 
-var kanajisyo = process.env["MTODIR"] + '/dict/kana-jisyo';
-var kanjijisyo = process.env["MTODIR"] + '/dict/kanji-jisyo';
+var kanajisyo = process.env["MTODIC"] + '/kana-jisyo';
+var kanjijisyo = process.env["MTODIC"] + '/kanji-jisyo';
 var dicarr = [];
 var fs = require('fs');
 

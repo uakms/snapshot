@@ -2,7 +2,7 @@
 ;-*- coding: utf-8 -*-
 ; Author: nakinor
 ; Created: 2012-06-05
-; Revised: 2016-01-26
+; Revised: 2016-01-28
 
 ; Common Lisp での実装にチャレンジ
 ; asdf と cl-ppcre ライブラリが必要で、たぶん clisp 専用
@@ -17,11 +17,11 @@
 (ql:quickload :cl-ppcre)
 
 ; パスの取得
-(setq mtorootdir (ext:getenv "MTODIR"))
+(setq mtodicdir (ext:getenv "MTODIC"))
 
 ; 辞書ファイルを指定
-(setq kana-jisyo (concatenate 'string mtorootdir "/dict/kana-jisyo"))
-(setq kanji-jisyo (concatenate 'string mtorootdir "/dict/kanji-jisyo"))
+(setq kana-jisyo (concatenate 'string mtodicdir "/kana-jisyo"))
+(setq kanji-jisyo (concatenate 'string mtodicdir "/kanji-jisyo"))
 
 ; 連想リストを入れるための空リスト
 (setq *dic-tmp* '())

@@ -1,7 +1,7 @@
 ;-*- coding: utf-8 -*-
 ; Author: nakinor
 ; Created: 2013-11-23
-; Revised: 2016-01-24
+; Revised: 2016-01-28
 
 ; Common Lisp での実装にチャレンジ
 ; SBCL 向け
@@ -22,13 +22,13 @@
 (ql:quickload :cl-ppcre :silent t)
 
 ; パスの取得
-(defparameter *mtorootdir* (sb-ext:posix-getenv "MTODIR"))
+(defparameter *mtodicdir* (sb-ext:posix-getenv "MTODIC"))
 
 ; 辞書ファイルを指定
 (defparameter *kana-jisyo*
-  (concatenate 'string *mtorootdir* "/dict/kana-jisyo"))
+  (concatenate 'string *mtodicdir* "/kana-jisyo"))
 (defparameter *kanji-jisyo*
-  (concatenate 'string *mtorootdir* "/dict/kanji-jisyo"))
+  (concatenate 'string *mtodicdir* "/kanji-jisyo"))
 
 ; 連想リストを入れるための空リスト
 (defparameter *dic-tmp* '())

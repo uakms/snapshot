@@ -2,11 +2,11 @@
 #
 # Author: nakinor
 # Created: 2011-10-09
-# Revised: 2015-04-13
+# Revised: 2016-01-28
 #
 # 辞書の途中に空白行があると実際の数とは合わなくなります
 
-DICTDIR=`dirname ${0}`/../dict
+DICTDIR=${MTODIC}
 
 kana_words=`grep -v '^;' $DICTDIR/kana-jisyo | wc -l`
 kana_overlap=`sort $DICTDIR/kana-jisyo | cut -f1-2 -d' ' | uniq -d | sed -e '/\;/d'`

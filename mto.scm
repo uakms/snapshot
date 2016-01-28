@@ -2,7 +2,7 @@
 ;;
 ;; Author: nakinor
 ;; Created: 2011-10-12
-;; Revised: 2016-01-24
+;; Revised: 2016-01-28
 ;;
 ; Scheme でも mto を実装してみるプロジェクト
 ; Gauche で用意されているライブラリを利用しているので gosh 専用です
@@ -12,9 +12,9 @@
 
 ; 読み込む辞書ファイルへのパス(環境変数を利用)
 (define kanajisyo
-  (string-append (get-environment-variable "MTODIR") "/dict/kana-jisyo"))
+  (string-append (get-environment-variable "MTODIC") "/kana-jisyo"))
 (define kanjijisyo
-  (string-append (get-environment-variable "MTODIR") "/dict/kanji-jisyo"))
+  (string-append (get-environment-variable "MTODIC") "/kanji-jisyo"))
 
 ; 作成したコンスセル集(連想リスト)を収納するための空リストを用意
 (define dic-tmp '()) ;できれば使いたくないのだけど局所変数がわからないので

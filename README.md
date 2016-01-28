@@ -5,54 +5,54 @@
 25.1.50 で動作を確認しています。ブラグイン形式の [emacs-mto](http://github.com/nakinor/emacs-mto) を使います。
 
 ## Vim での利用
-7.4.1180 で動作を確認しています。ブラグイン形式の [vim-mto](http://github.com/nakinor/vim-mto) を使います。
+7.4.1185 で動作を確認しています。ブラグイン形式の [vim-mto](http://github.com/nakinor/vim-mto) を使います。
 
 ## その他のスクリプトでの利用
-辞書へのパスを環境変数から探すので、`export MTODIR="/Users/path/to/snapshot"` 等で `MTODIR` を設定しておいてください。
+辞書ディレクトリへのパスを環境変数から探すので、`export MTODIC="/Users/path/to/mtodic"` 等で `MTODIC` を設定しておいてください。
 
 環境変数が適切に設定されていればどこに置いても動くはずですが、とりあえず、下記のコマンドはカレントディレクトリが snapshot であるとします。
 
 ### Python3
 3.5.1 で動作確を認しています。
 
-    python3 tool/mto.py tradkana README.md
+    python3 mto.py tradkana README.md
 
 ### Ruby
 2.4.0dev で動作を確認しています。また、mruby でも動作しますが、`mruby-io` と `mruby-env`、そして `mruby-regexp-pcre` もしくは `mruby-onig-regexp` を組み込んでビルドしておいてください。
 
-    ruby tool/mto.rb tradkana README.md
-    mruby tool/mto.rb tradkana README.md
+    ruby mto.rb tradkana README.md
+    mruby mto.rb tradkana README.md
 
 ### Perl5
 5.18.2 で動作を確認しています。
 
-    perl tool/mto.pl tradkana README.md
+    perl mto.pl tradkana README.md
 
 ### Lua
 5.3.2 で動作を確認しています。
 
-    lua tool/mto.lua tradkana README.md
+    lua mto.lua tradkana README.md
 
 ### Go
 1.5.3 で動作を確認しています。
 
-    go run tool/mto.go tradkana README.md
+    go run mto.go tradkana README.md
 
 もしくは実行ファイルにして
 
-    go build tool/mto.go
+    go build mto.go
     ./mto tradkana README.md
 
 ### CSharp
 momo 4.2.1 で動作を確認しています。
 
-    mcs tool/mto-mono.cs
+    mcs mto-mono.cs
     mono mto-mono.exe tradkana README.md
 
 ### Objective-C
 Xcode 7.2 で動作を確認しています。
 
-    clang -framework Foundation tool/osx/main.m tool/osx/MTODict.m -o mto-objc
+    clang -framework Foundation osx/main.m osx/MTODict.m -o mto-objc
     ./mto-objc tradkana README.md
 
 ### C
@@ -64,17 +64,17 @@ Xcode 7.2 で動作を確認しています。
 ### Node.js
 4.2.6 で動作を確認しています。
 
-    node tool/mto-node.js tradkana README.md
+    node mto-node.js tradkana README.md
 
 ### Gauche
 0.9.5_pre1 で動作を確認しています。
 
-    gosh tool/mto.scm tradkana README.md
+    gosh mto.scm tradkana README.md
 
 ### SBCL
 1.3.1.249 で動作を確認しています。ライブラリの cl-ppcre-2.0.11 が必要です。
 
-    sbcl --script tool/mto-sbcl.lisp tradkana README.md
+    sbcl --script mto-sbcl.lisp tradkana README.md
 
 ### Clozure CL
 1.10 で動作を確認しています。ライブラリの cl-ppcre-2.0.11 が必要です。
@@ -85,7 +85,7 @@ Xcode 7.2 で動作を確認しています。
 ### CLISP
 2.47 での動作を確認しました(Panther on iBook にて)。ライブラリの cl-ppcre-2.0.7 が必要です。
 
-    clisp tool/mto-clisp.lisp tradkana README.md
+    clisp mto-clisp.lisp tradkana README.md
 
 ## その他のスクリプトについて
 ### Makefile
@@ -94,17 +94,17 @@ Golang, C, C#, Objective-C, Clozure CL のようなコンパイル系のもの�
 ### conv.go
 辞書をチェックしたり数えたり JSON っぽく出力します。
 
-    go run tool/conv.go -c dict/kana-jisyo
+    go run tools/conv.go -c dict/kana-jisyo
 
 ### jisyo-converter.rb
 `conv.go` を作成する前に使っていたものです。カレントディレクトリにファイルが出力されます。
 
-    ruby tool/jisyo-converter.rb
+    ruby tools/jisyo-converter.rb
 
 ### word-count.sh
 `conv.go` を作成する前に使っていたものです。辞書の要素数や簡易的なチェックをします。
 
-    sh tool/word-count.sh
+    sh tools/word-count.sh
 
 ### mto.js
 この[ページ](http://github.com/nakinor/mto)で利用している JavaScript です。実はこれが結構速かったりします。ブラウザのエンジンが優秀なのか、`split` and `join` が `replace` よりも速いからなのか。
@@ -120,26 +120,3 @@ Golang, C, C#, Objective-C, Clozure CL のようなコンパイル系のもの�
 ガサガサッ。IDE で作成したプロジェクトってどのファイルを公開していいのかわからないんだよね。プロファイルに本名とか書かれちゃってるし……
 
 `MtoGW.exe.config` と `MtoGW_Form1.cs` と `MtoGW_Form2.cs` と `MtoGW_Program.cs` が Visual Studio 2008 Express で作成したものです。
-
-# 変換サンプル文字列
-「ゑ」になる代表を使った段落。
-
-木を植えて石を据えれば庭となる。仕事をすれば飢えることなし。笑う門には福来たる。それご冗談でしょう？ご忠告ありがとうございます。
-
-<blockquote>
-このようにクオートされている部分を無視するオプションを付けてみた。実装できているのは Perl, Python, Ruby, Lua だけである。タグは同一行にあったりネストしていると期待通りの動作をしてくれない。
-</blockquote>
-
-いかにも旧字っぽくなりそうでならない「老い」などを使った段落。
-
-その事について私がどうしようと私の勝手ですよね？たとえ老いた時に悔いる結果となったとしても、報いはその時に受けるでしょう。絶えず何かに怯えている心。甘えだとわかっているがゆえに吠えずにはいられない。煮え切らない自分の心の弱さに悶え苦しんで消え入りそうな日々。増えていくフィギュアと萌えるアニメで一時的に癒える表面的な心。すっかり冷えてしまった心を再び燃えあがらせて凍える夜を超えてゆけ。
-
-単漢字タグ付けの変換確認をする部分。
-
-Vim でこのファイルを開いているのであれば、`\p` とキーを押してみましょう。何か變化はありましたか？無ければ `~/.vimrc` にごにょごにょ書きましょう。`\p` の他にも `\h` と `\l` でも變化があります。変換の都度 `u` でアンドゥしてくださいね。
-
-こういったデモンストレーション用のサンプルファイルは、大抵うまく變換できるように文章と辭書を調整しているもの。だからこいつで試しても無意味だっ！
-
-風邪氣味なのでお醫者さんの處に行こうかと思っているのだけど、やっぱり怖いので鹽水でうがいをして遣り過すのであった。
-
-今頃になって漢字のふりがなを付けるのではなく、舊字體を新字體にして添付してやる形にすれば良いと思った。この場合は nokaco の漢字辭書を流用できるもの。う〜、失敗。まぁ、それはいつかやればいいや。あと、色付けすると變換した場所がわかるけど目がチカチカして良くないのね。

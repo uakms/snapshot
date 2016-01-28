@@ -1,6 +1,6 @@
 /* Author: nakinor
  * Created: 2015-09-22
- * Revised: 2015-09-27
+ * Revised: 2016-01-28
  */
 
 #include <stdio.h>
@@ -27,11 +27,11 @@ int strgsub(char *buf, char *car, char *cdr);
 
 int main(int argc, char *argv[]) {
   char kanajisyo[256];  /* パスの長さってどのくらいになる？*/
-  strcpy(kanajisyo, getenv("MTODIR"));  /* 環境変数は実行時にわかるのでここ */
-  strcat(kanajisyo, "/dict/kana-jisyo"); /* 簡単にディプコピーしたいわ*/
+  strcpy(kanajisyo, getenv("MTODIC"));  /* 環境変数は実行時にわかるのでここ */
+  strcat(kanajisyo, "/kana-jisyo"); /* 簡単にディプコピーしたいわ*/
   char kanjijisyo[256];
-  strcpy(kanjijisyo, getenv("MTODIR"));
-  strcat(kanjijisyo, "/dict/kanji-jisyo");
+  strcpy(kanjijisyo, getenv("MTODIC"));
+  strcat(kanjijisyo, "/kanji-jisyo");
 
   if (argc != 1) {
     if (strcmp(argv[1], "tradkana") == 0) {

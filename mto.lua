@@ -2,12 +2,12 @@
 --[[
   Author: nakinor
   Created: 2011-12-22
-  Revised: 2016-01-24
+  Revised: 2016-01-28
 -- ]]
 
 -- 辞書の場所を指定(絶対パスで指定する方がいい)
-kana_jisyo = os.getenv("MTODIR") .. "/dict/kana-jisyo"
-kanji_jisyo = os.getenv("MTODIR") .. "/dict/kanji-jisyo"
+kana_jisyo = os.getenv("MTODIC") .. "/kana-jisyo"
+kanji_jisyo = os.getenv("MTODIC") .. "/kanji-jisyo"
 
 -- テーブルを用意
 dic_table = {}

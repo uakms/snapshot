@@ -1,6 +1,6 @@
 /* Author: nakinor
  * Created: 2013-12-06
- * Revised: 2015-09-28
+ * Revised: 2016-01-28
  */
 
 package main
@@ -15,8 +15,8 @@ import (
 )
 
 var (
-	kanajisyo  string = os.Getenv("MTODIR") + "/dict/kana-jisyo"
-	kanjijisyo string = os.Getenv("MTODIR") + "/dict/kanji-jisyo"
+	kanajisyo  string = os.Getenv("MTODIC") + "/kana-jisyo"
+	kanjijisyo string = os.Getenv("MTODIC") + "/kanji-jisyo"
 	dicarr            = [][]string{}
 )
 
@@ -110,7 +110,7 @@ func ArgumentParser() {
 			StdinStringCarReplacer()
 			return
 		case os.Args[1] == "newkanji":
-			DictCreator(kanajisyo)
+			DictCreator(kanjijisyo)
 			StdinStringCdrReplacer()
 			return
 		}
@@ -133,7 +133,7 @@ func ArgumentParser() {
 			StringCarReplacer(os.Args[2])
 			return
 		case os.Args[1] == "newkanji":
-			DictCreator(kanajisyo)
+			DictCreator(kanjijisyo)
 			StringCdrReplacer(os.Args[2])
 			return
 		}

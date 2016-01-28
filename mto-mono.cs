@@ -4,7 +4,7 @@
  *
  * Author: nakinor
  * Created: 2012-03-23
- * Revised: 2013-12-19
+ * Revised: 2016-01-28
  *
  */
 
@@ -22,9 +22,9 @@ namespace mtocw
   {
     // 辞書の場所は環境変数から取得する
     // 注意点は Path.Combine を使うと下記の場合、path に '/' が付加される点
-    static string path = System.Environment.GetEnvironmentVariable("MTODIR");
-    static string KANA_FILE = Path.Combine(path, "dict/kana-jisyo");
-    static string KANJI_FILE = Path.Combine(path, "dict/kanji-jisyo");
+    static string path = System.Environment.GetEnvironmentVariable("MTODIC");
+    static string KANA_FILE = Path.Combine(path, "kana-jisyo");
+    static string KANJI_FILE = Path.Combine(path, "kanji-jisyo");
     static ArrayList LIST = new ArrayList();
 
     static void Main(string[] args)
