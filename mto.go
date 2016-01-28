@@ -143,9 +143,9 @@ func ArgumentParser() {
 }
 
 func main() {
-	if os.Getenv("MTODIR") == "" {
-		fmt.Println("MTODIR を環境変数に設定してください。")
-		fmt.Println("例：export MTODIR=\"/Users/path/to/mto\"")
+	if os.Getenv("MTODIC") == "" {
+		fmt.Println("MTODIC を環境変数に設定してください。")
+		fmt.Println("例：export MTODIC=\"/Users/path/to/mto\"")
 		return
 	}
 	ArgumentParser()

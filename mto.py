@@ -16,8 +16,8 @@ sys.stdin  = io.TextIOWrapper(sys.stdin.buffer, encoding='utf-8')
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 
 # 辞書の場所を絶対パスで指定するで
-kana_jisyo  = os.environ.get("MTODIR") + "/dict/kana-jisyo"
-kanji_jisyo = os.environ.get("MTODIR") + "/dict/kanji-jisyo"
+kana_jisyo  = os.environ.get("MTODIC") + "/kana-jisyo"
+kanji_jisyo = os.environ.get("MTODIC") + "/kanji-jisyo"
 
 # 変換を無視すべきクオートの種類
 beg_pattern = '<q>|<blockquote>|begin{quote}|begin{quotation}'

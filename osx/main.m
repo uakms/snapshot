@@ -13,12 +13,12 @@ void printUsage();
 
 int main(int argc, const char * argv[]) {
 
-    char *mtodir = getenv("MTODIR");
+    char *mtodir = getenv("MTODIC");
     NSString *dictfile;
 
     // 環境変数が設定されているかどうかチェック
     if (mtodir == NULL) {
-        printf("%s", "環境変数 MTODIR を設定してください。\n");
+        printf("%s", "環境変数 MTODIC を設定してください。\n");
         return 1;
     }
 
@@ -34,14 +34,14 @@ int main(int argc, const char * argv[]) {
 
         if ([henkanopt isEqualToString:@"checkdictkana"]) {
           dictfile = [NSString stringWithFormat:@"%s%@",
-                               mtodir, @"/dict/kana-jisyo"];
+                               mtodir, @"/kana-jisyo"];
           id mtoinst = [[MTODict alloc] initWithDict:dictfile];
           [mtoinst printDict];
           //puts("checkdictkanaでした。");
         }
         else if ([henkanopt isEqualToString:@"checkdictkanji"]) {
           dictfile = [NSString stringWithFormat:@"%s%@",
-                               mtodir, @"/dict/kanji-jisyo"];
+                               mtodir, @"/kanji-jisyo"];
           id mtoinst = [[MTODict alloc] initWithDict:dictfile];
           [mtoinst printDict];
           //puts("checkdictkanjiでした。");
@@ -57,7 +57,7 @@ int main(int argc, const char * argv[]) {
                                                encoding: NSUTF8StringEncoding];
       if ([henkanopt isEqualToString:@"tradkana"]) {
         dictfile = [NSString stringWithFormat:@"%s%@",
-                             mtodir, @"/dict/kana-jisyo"];
+                             mtodir, @"/kana-jisyo"];
         id mtoinst = [[MTODict alloc] initWithDict:dictfile];
         [mtoinst replaceStringCar:
                    [NSString stringWithCString:argv[2]
@@ -66,7 +66,7 @@ int main(int argc, const char * argv[]) {
       }
       else if ([henkanopt isEqualToString:@"modernkana"]) {
         dictfile = [NSString stringWithFormat:@"%s%@",
-                             mtodir, @"/dict/kana-jisyo"];
+                             mtodir, @"/kana-jisyo"];
         id mtoinst = [[MTODict alloc] initWithDict:dictfile];
         [mtoinst replaceStringCdr:
                    [NSString stringWithCString:argv[2]
@@ -75,7 +75,7 @@ int main(int argc, const char * argv[]) {
       }
       else if ([henkanopt isEqualToString:@"oldkanji"]) {
         dictfile = [NSString stringWithFormat:@"%s%@",
-                             mtodir, @"/dict/kanji-jisyo"];
+                             mtodir, @"/kanji-jisyo"];
         id mtoinst = [[MTODict alloc] initWithDict:dictfile];
         [mtoinst replaceStringCar:
                    [NSString stringWithCString:argv[2]
@@ -84,7 +84,7 @@ int main(int argc, const char * argv[]) {
       }
       else if ([henkanopt isEqualToString:@"newkanji"]) {
         dictfile = [NSString stringWithFormat:@"%s%@",
-                             mtodir, @"/dict/kanji-jisyo"];
+                             mtodir, @"/kanji-jisyo"];
         id mtoinst = [[MTODict alloc] initWithDict:dictfile];
         [mtoinst replaceStringCdr:
                    [NSString stringWithCString:argv[2]

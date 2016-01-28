@@ -92,8 +92,8 @@ function argParser() {
 }
 
 function main() {
-    if (process.env["MTODIR"] == undefined ) {
-        console.log("環境変数 MTODIR を設定してください");
+    if (process.env["MTODIC"] == undefined ) {
+        console.log("環境変数 MTODIC を設定してください");
     } else {
         argParser();
     }
