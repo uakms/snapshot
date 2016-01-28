@@ -1,6 +1,10 @@
 # 微笑み方
 こちらの[記事](http://sci.hateblo.jp/entry/Benchmarking2)の付録です。それぞれのスクリプトは短かいので、実際に動作をさせなくてもスクリプトを読んだだけで脳内実行・デバッグ・リファクタリング・クリティカルパスの発見ができてしまうのではありませんか？
 
+## 辞書をダウンロードしてください
+GitHub から辞書をダウンロードもしくはクローンしてください。
+`git clone git@github.com:nakinor/mto.git mtodic`
+
 ## Emacs での利用
 25.1.50 で動作を確認しています。ブラグイン形式の [emacs-mto](http://github.com/nakinor/emacs-mto) を使います。
 
