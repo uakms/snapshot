@@ -3,7 +3,7 @@
 #
 # Author: nakinor
 # Created: 2014-03-20
-# Revised: 2016-01-28
+# Revised: 2016-01-29
 
 require 'open-uri'
 
@@ -59,7 +59,7 @@ def create_dicarr(use_jisyo)
       unless line =~ /^;.*|^$/
         string = line.sub(/\s+;.*/, "").chomp("\n")
         elems = string.split(/\s* \//)
-          tmp_arr << elems
+        tmp_arr << elems
       end
     end
   }
@@ -102,7 +102,7 @@ def output_tsv(dicarr)
 end
 
 def output_csv(dicarr)
-   tmp_arr = []
+  tmp_arr = []
   dicarr.each { |x|
     tmp_arr << "#{x[0]}" + "," +  "#{x[1]}"
   }
@@ -139,12 +139,12 @@ def main()
   write_file("dic-kana.json", KANA_JISYO)
   write_file("dic-kanji.json", KANJI_JISYO)
   write_file("dic-hangeul.json", HANGEUL_JISYO)
-#  write_file("kana-jisyo.json", KANA_JISYO)
-#  write_file("kanji-jisyo.json", KANJI_JISYO)
-#  write_file("kana-jisyo.csv", KANA_JISYO)
-#  write_file("kanji-jisyo.csv", KANJI_JISYO)
-#  write_file("kana-jisyo.tsv", KANA_JISYO)
-#  write_file("kanji-jisyo.tsv", KANJI_JISYO)
+  # write_file("kana-jisyo.json", KANA_JISYO)
+  # write_file("kanji-jisyo.json", KANJI_JISYO)
+  # write_file("kana-jisyo.csv", KANA_JISYO)
+  # write_file("kanji-jisyo.csv", KANJI_JISYO)
+  # write_file("kana-jisyo.tsv", KANA_JISYO)
+  # write_file("kanji-jisyo.tsv", KANJI_JISYO)
 end
 
 main()
