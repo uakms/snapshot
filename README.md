@@ -88,6 +88,7 @@ Xcode 7.2 で動作を確認しています。
 2.47 での動作を確認しています(Panther on iBook にて)。ライブラリの cl-ppcre-2.0.7 が必要です。
 
     clisp mto-clisp.lisp tradkana test/seed
+    ./mto-ccl tradkana README.md
 
 ## その他のスクリプトについて
 ### Makefile
@@ -114,7 +115,7 @@ Golang, C, C#, Objective-C, Clozure CL のようなコンパイル系のもの�
 ### osx ディレクトリ
 ごにょごにょ。IDE で作成したプロジェクトってどのファイルを公開していいのかわからないんだよね。プロファイルに本名とか書かれちゃってるし……
 
-`MTOAppDelegate.h` と `MTOAppDelegate.m` と `MainMenu.xib` が Cocoa 用です。`MTODict.h` と `MTODict.m` と `main.m` が CUI 用です。
+`MTOAppDelegate.h` と `MTOAppDelegate.m` と `MainMenu.xib` が Cocoa 用です。`MTODict.h` と `MTODict.m` と `main.m` が CUI 用です。`MTOAppDelegate.h` と `MTOAppDelegate.m` と `MainMenu.xib` が Cocoa 用です。
 
 ### win ディレクトリ
 ガサガサッ。IDE で作成したプロジェクトってどのファイルを公開していいのかわからないんだよね。プロファイルに本名とか書かれちゃってるし……
