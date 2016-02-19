@@ -1,6 +1,4 @@
 #!/usr/local/bin/ruby -EUTF-8
-# -*- coding: utf-8 -*-
-#
 # Author: nakinor
 # Created: 2014-03-20
 # Revised: 2016-01-29
