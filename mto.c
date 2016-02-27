@@ -26,9 +26,9 @@ int strgsub(char *buf, char *car, char *cdr);
 
 
 int main(int argc, char *argv[]) {
-  char kanajisyo[256];  /* パスの長さってどのくらいになる？*/
+  char kanajisyo[256];                  /* パスの長さってどのくらいになる？*/
   strcpy(kanajisyo, getenv("MTODIC"));  /* 環境変数は実行時にわかるのでここ */
-  strcat(kanajisyo, "/kana-jisyo"); /* 簡単にディプコピーしたいわ*/
+  strcat(kanajisyo, "/kana-jisyo");     /* 簡単にディープコピーしたいわ*/
   char kanjijisyo[256];
   strcpy(kanjijisyo, getenv("MTODIC"));
   strcat(kanjijisyo, "/kanji-jisyo");
