@@ -7,7 +7,7 @@
 25.1.50 で動作を確認しています。ブラグイン形式の [emacs-mto](http://github.com/nakinor/emacs-mto) を使います。
 
 ## Vim での利用
-7.4.1425 で動作を確認しています。ブラグイン形式の [vim-mto](http://github.com/nakinor/vim-mto) を使います。
+7.4.1467 で動作を確認しています。ブラグイン形式の [vim-mto](http://github.com/nakinor/vim-mto) を使います。
 
 ## 端末上での各種スクリプトの利用
 辞書ディレクトリへのパスを環境変数から探すので、`export MTODIC="/Users/path/to/mtodic"` 等の絶対パスで `MTODIC` を設定しておいてください。
@@ -60,8 +60,14 @@ Xcode 7.2.1 で動作を確認しています。
 ### C
 Xcode 7.2.1 で動作を確認しています。
 
-    cc mto.c -o mto
-    ./mto tradkana test/seed
+    clang mto.c -o mto-c
+    ./mto-c tradkana test/seed
+
+### C++
+Xcode 7.2.1 で動作を確認しています。
+
+    clang++ mto.cc -o mto-cc
+    ./mto-cc tradkana test/seed
 
 ### Node.js
 4.3.1 で動作を確認しています。
@@ -74,7 +80,7 @@ Xcode 7.2.1 で動作を確認しています。
     gosh mto.scm tradkana test/seed
 
 ### SBCL
-1.3.2.136 で動作を確認しています。ライブラリの cl-ppcre-2.0.11 が必要です。
+1.3.3 で動作を確認しています。ライブラリの cl-ppcre-2.0.11 が必要です。
 
     sbcl --script mto-sbcl.lisp tradkana test/seed
 
@@ -109,7 +115,7 @@ Golang, C, C#, Objective-C, Clozure CL のようなコンパイル系のもの�
     sh tools/word-count.sh
 
 ### mto.js
-この[ページ](http://github.com/nakinor/mto)で利用している JavaScript です。実はこれが結構速かったりします。ブラウザのエンジンが優秀なのか、`split` and `join` が `replace` よりも速いからなのか。今はこればかり使っています。
+この[ページ](http://github.com/nakinor/mto/site)で利用している JavaScript です。実はこれが結構速かったりします。ブラウザのエンジンが優秀なのか、`split` and `join` が `replace` よりも速いからなのか。今はこればかり使っています。
 
 ### osx ディレクトリ
 ごにょごにょ。IDE で作成したプロジェクトってどのファイルを公開していいのかわからないんだよね。プロファイルに本名とか書かれちゃってるし……

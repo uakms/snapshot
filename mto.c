@@ -1,6 +1,6 @@
 /* Author: nakinor
  * Created: 2015-09-22
- * Revised: 2016-01-28
+ * Revised: 2016-02-29
  */
 
 #include <stdio.h>
@@ -9,7 +9,7 @@
 #include <regex.h>
 
 //#define PRINT_DICT
-#define MAX_ELEM 4000  /* 作成する辞書の最大要素数 */
+#define MAX_ELEM 4500  /* 作成する辞書の最大要素数 */
 #define MAX_LINE 256   /* 外部辞書の一行の長さ x 文字の UTF-8 バイト数 */
                        /* 一行 80x3 で 256 バイトあれば十分かな？ */
 #define TMP_LINE 128   /* 備考を除いた要素になりうる部分のバイト数 */

@@ -1,11 +1,15 @@
 # Author: nakinor
 # Created: 2016-01-25
-# Revised: 2016-01-28
+# Revised: 2016-03-01
 
-all: mto-c mto-objc mto-go mto-mono mto-ccl mto-sbcl
+.PHONY: all test clean
+all: mto-c mto-cc mto-objc mto-go mto-mono mto-ccl mto-sbcl
 
 mto-c: mto.c
 	clang -Ofast -o mto-c mto.c
+
+mto-cc: mto.cc
+	clang++ -Ofast -o mto-cc mto.cc
 
 mto-objc: osx/main.m osx/MTODict.m
 	clang -Ofast -o mto-objc -framework Foundation osx/main.m osx/MTODict.m
@@ -25,13 +29,12 @@ mto-sbcl: mto-sbcl.lisp
 	@sed -e 's/^;.*:executable/:executable/' t2-mto-sbcl.lisp > t3-mto-sbcl.lisp
 	@sed -e 's/(main)/;(main)/' t3-mto-sbcl.lisp > bin-mto-sbcl.lisp
 	sbcl --noinform --no-sysinit --no-userinit --load bin-mto-sbcl.lisp 1>/dev/null
-	@rm *-mto-sbcl.lisp 
-
-.PHONY: test
+	@rm *-mto-sbcl.lisp
 
 test: test-gen \
 	test-py \
 	test-rb \
+	test-mrb \
 	test-pl \
 	test-lua \
 	test-gosh \
@@ -39,6 +42,7 @@ test: test-gen \
 	test-mono \
 	test-go \
 	test-c \
+	test-cc \
 	test-ccl \
 	test-sbcl \
 	test-objc
@@ -56,6 +60,10 @@ test-py:
 test-rb:
 	@echo "Ruby Test!"
 	@sh test/test-diff.sh ruby mto.rb
+
+test-mrb:
+	@echo "MRuby Test!"
+	@sh test/test-diff.sh mruby mto.rb
 
 test-pl:
 	@echo "Perl Test!"
@@ -84,6 +92,10 @@ test-go: mto-go
 test-c: mto-c
 	@echo "C Test!"
 	@sh test/test-diff.sh ./mto-c
+
+test-cc: mto-cc
+	@echo "CC Test!"
+	@sh test/test-diff.sh ./mto-cc
 
 test-ccl: mto-ccl
 	@echo "Cluzure CL Test!"
