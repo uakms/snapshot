@@ -22,7 +22,7 @@ else
 fi
 
 ${1} ${2} newkanji test/ModernKanaOldKanji.ok > test/ModernKanaNewKanji.out
-if diff -q test/ModernKanaNewKanji.out test/ModernKananewKanji.ok > /dev/null; then
+if diff -q test/ModernKanaNewKanji.out test/ModernKanaNewKanji.ok > /dev/null; then
     echo "  newkanji test:   \033[3#2mOK\033[0m"
 else
     echo "  newkanji test:   \033[3#1mNG\033[0m"

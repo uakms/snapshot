@@ -7,7 +7,7 @@
 25.1.50 で動作を確認しています。ブラグイン形式の [emacs-mto](http://github.com/nakinor/emacs-mto) を使います。
 
 ## Vim での利用
-7.4.1476 で動作を確認しています。ブラグイン形式の [vim-mto](http://github.com/nakinor/vim-mto) を使います。
+7.4.1555 で動作を確認しています。ブラグイン形式の [vim-mto](http://github.com/nakinor/vim-mto) を使います。
 
 ## 端末上での各種スクリプトの利用
 辞書ディレクトリへのパスを環境変数から探すので、`export MTODIC="/Users/path/to/mtodic"` 等の絶対パスで `MTODIC` を設定しておいてください。
@@ -70,9 +70,14 @@ Xcode 7.2.1 で動作を確認しています。
     ./mto-cc tradkana test/seed
 
 ### Node.js
-4.3.1 で動作を確認しています。
+4.4.0 で動作を確認しています。
 
     node mto-node.js tradkana test/seed
+
+### PHP
+5.5.30 で動作を確認しています。
+
+    php mto.php tradkana test/seed
 
 ### Gauche
 0.9.5_pre1 で動作を確認しています。

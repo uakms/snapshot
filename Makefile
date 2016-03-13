@@ -41,6 +41,7 @@ test: test-gen \
 	test-node \
 	test-mono \
 	test-go \
+	test-php \
 	test-c \
 	test-cc \
 	test-ccl \
@@ -81,6 +82,10 @@ test-node:
 	@echo "Node.js Test!"
 	@sh test/test-diff.sh node mto-node.js
 
+test-php:
+	@echo "PHP Test!"
+	@sh test/test-diff.sh php mto.php
+
 test-mono: mto-mono
 	@echo "Mono Test!"
 	@sh test/test-diff.sh mono mto-mono
@@ -98,7 +103,7 @@ test-cc: mto-cc
 	@sh test/test-diff.sh ./mto-cc
 
 test-ccl: mto-ccl
-	@echo "Cluzure CL Test!"
+	@echo "Clozure CL Test!"
 	@sh test/test-diff.sh ./mto-ccl
 
 test-sbcl: mto-sbcl
