@@ -1,6 +1,6 @@
 # Author: nakinor
 # Created: 2016-01-25
-# Revised: 2016-03-01
+# Revised: 2016-03-16
 
 .PHONY: all test clean
 all: mto-c mto-cc mto-objc mto-go mto-mono mto-ccl mto-sbcl
@@ -21,13 +21,15 @@ mto-mono: mto-mono.cs
 	mcs -out:mto-mono mto-mono.cs
 
 mto-ccl: mto-ccl.lisp
-	dx86cl64 --no-init --load mto-ccl.lisp
+	@sed -e 's/unprocessed-command-line-arguments/command-line-argument-list/' mto-ccl.lisp > t1-mto-ccl.lisp
+	@sed -e 's/;(mto-bin)/(mto-bin)/' t1-mto-ccl.lisp > t2-mto-ccl.lisp
+	@sed -e 's/(main)/;(main)/' t2-mto-ccl.lisp > bin-mto-ccl.lisp
+	dx86cl64 --no-init --load bin-mto-ccl.lisp
+	@rm *-mto-ccl.lisp
 
 mto-sbcl: mto-sbcl.lisp
-	@sed -e 's/^;.*(sb-ext/(sb-ext/' mto-sbcl.lisp > t1-mto-sbcl.lisp
-	@sed -e 's/^;.*:toplevel/:toplevel/' t1-mto-sbcl.lisp > t2-mto-sbcl.lisp
-	@sed -e 's/^;.*:executable/:executable/' t2-mto-sbcl.lisp > t3-mto-sbcl.lisp
-	@sed -e 's/(main)/;(main)/' t3-mto-sbcl.lisp > bin-mto-sbcl.lisp
+	@sed -e 's/;(mto-bin)/(mto-bin)/' mto-sbcl.lisp > t1-mto-sbcl.lisp
+	@sed -e 's/(main)/;(main)/' t1-mto-sbcl.lisp > bin-mto-sbcl.lisp
 	sbcl --noinform --no-sysinit --no-userinit --load bin-mto-sbcl.lisp 1>/dev/null
 	@rm *-mto-sbcl.lisp
 

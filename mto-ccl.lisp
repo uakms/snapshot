@@ -1,17 +1,17 @@
 ;-*- coding: utf-8 -*-
 ; Author: nakinor
 ; Created: 2016-01-24
-; Revised: 2016-01-28
+; Revised: 2016-03-16
 
 ; Common Lisp での実装にチャレンジ
 ; Clozure CL 向け
 ;
 ; CCL では環境変数を利用し、またコンパイルするようにした。
 ; というか、スクリプト的に使うにはどうすればいいんだ？
-;
-; Usage:
-;   ccl -l mto-ccl.lisp
-;   ./mto-ccl options inputfile
+; わかった、下記のようにすれば良いらしい。ただし引数の length が違うので、
+; ダミー を入れないといけない。
+; ccl -l mto-ccl.lisp -e '(quit)' -- dummy tradkana foo.txt
+
 
 ; ライブラリの読み込み(これが無いと検索・置換ができない)
 (load "~/quicklisp/setup.lisp")
@@ -92,33 +92,33 @@
 ; 条件分岐(ファイルからの変換)
 (defun replace-from-file ()
   (cond
-   ((equal "tradkana" (cadr *command-line-argument-list*))
+   ((equal "tradkana" (cadr *unprocessed-command-line-arguments*))
     (make-jisyo *kana-jisyo*)
-    (mto-replace-car (caddr *command-line-argument-list*)))
-   ((equal "modernkana" (cadr *command-line-argument-list*))
+    (mto-replace-car (caddr *unprocessed-command-line-arguments*)))
+   ((equal "modernkana" (cadr *unprocessed-command-line-arguments*))
     (make-jisyo *kana-jisyo*)
-    (mto-replace-cdr (caddr *command-line-argument-list*)))
-   ((equal "oldkanji" (cadr *command-line-argument-list*))
+    (mto-replace-cdr (caddr *unprocessed-command-line-arguments*)))
+   ((equal "oldkanji" (cadr *unprocessed-command-line-arguments*))
     (make-jisyo *kanji-jisyo*)
-    (mto-replace-car (caddr *command-line-argument-list*)))
-   ((equal "newkanji" (cadr *command-line-argument-list*))
+    (mto-replace-car (caddr *unprocessed-command-line-arguments*)))
+   ((equal "newkanji" (cadr *unprocessed-command-line-arguments*))
     (make-jisyo *kanji-jisyo*)
-    (mto-replace-cdr (caddr *command-line-argument-list*)))
+    (mto-replace-cdr (caddr *unprocessed-command-line-arguments*)))
    (t (format t "もしかしてオプションが違うかも？~%"))))
 
 ; 条件分岐(標準入力からの変換)
 (defun replace-from-stdin ()
   (cond
-   ((equal "tradkana" (cadr *command-line-argument-list*))
+   ((equal "tradkana" (cadr *unprocessed-command-line-arguments*))
     (make-jisyo *kana-jisyo*)
     (mto-replace-stdin-car))
-   ((equal "modernkana" (cadr *command-line-argument-list*))
+   ((equal "modernkana" (cadr *unprocessed-command-line-arguments*))
     (make-jisyo *kana-jisyo*)
     (mto-replace-stdin-cdr))
-   ((equal "oldkanji" (cadr *command-line-argument-list*))
+   ((equal "oldkanji" (cadr *unprocessed-command-line-arguments*))
     (make-jisyo *kanji-jisyo*)
     (mto-replace-stdin-car))
-   ((equal "newkanji" (cadr *command-line-argument-list*))
+   ((equal "newkanji" (cadr *unprocessed-command-line-arguments*))
     (make-jisyo *kanji-jisyo*)
     (mto-replace-stdin-cdr))
    (t (format t "もしかしてオプションが違うかも？~%"))))
@@ -134,16 +134,17 @@ options:
 
 ; メイン。まずはここからスタート
 (defun main ()
-  (cond ((< 3 (length *command-line-argument-list*)) (mto-usage))
-        ((equal 3 (length *command-line-argument-list*))
+  (cond ((< 3 (length *unprocessed-command-line-arguments*)) (mto-usage))
+        ((equal 3 (length *unprocessed-command-line-arguments*))
          (replace-from-file))
-        ((equal 2 (length *command-line-argument-list*))
+        ((equal 2 (length *unprocessed-command-line-arguments*))
          (replace-from-stdin))
         (t (mto-usage))))
 
-(ccl:save-application
- "mto-ccl"
- :toplevel-function #'main
- :prepend-kernel t)
+(defun mto-bin ()
+  (ccl:save-application "mto-ccl"
+                        :toplevel-function #'main
+                        :prepend-kernel t))
 
-;(main)
+;(mto-bin)
+(main)

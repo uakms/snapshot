@@ -7,7 +7,7 @@
 25.1.50 で動作を確認しています。ブラグイン形式の [emacs-mto](http://github.com/nakinor/emacs-mto) を使います。
 
 ## Vim での利用
-7.4.1555 で動作を確認しています。ブラグイン形式の [vim-mto](http://github.com/nakinor/vim-mto) を使います。
+7.4.1579 で動作を確認しています。ブラグイン形式の [vim-mto](http://github.com/nakinor/vim-mto) を使います。
 
 ## 端末上での各種スクリプトの利用
 辞書ディレクトリへのパスを環境変数から探すので、`export MTODIC="/Users/path/to/mtodic"` 等の絶対パスで `MTODIC` を設定しておいてください。
@@ -92,8 +92,7 @@ Xcode 7.2.1 で動作を確認しています。
 ### Clozure CL
 1.10 で動作を確認しています。ライブラリの cl-ppcre-2.0.11 が必要です。
 
-    dx86cl64 -l mto-ccl.lisp
-    ./mto-ccl tradkana test/seed
+    ccl -load mto-ccl.lisp -eval '(quit)' -- dummy tradkana test/seed
 
 ### CLISP
 2.47 での動作を確認しています(Panther on iBook にて)。ライブラリの cl-ppcre-2.0.7 が必要です。

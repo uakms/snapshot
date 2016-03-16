@@ -1,7 +1,7 @@
 ;-*- coding: utf-8 -*-
 ; Author: nakinor
 ; Created: 2013-11-23
-; Revised: 2016-01-28
+; Revised: 2016-03-16
 
 ; Common Lisp での実装にチャレンジ
 ; SBCL 向け
@@ -145,9 +145,12 @@ options:
          (replace-from-stdin))
         (t (mto-usage))))
 
-; バイナリにする場合はこの部分のコメントを外して (main) をコメントアウトする
-; (sb-ext:save-lisp-and-die "mto-sbcl"
-;                           :toplevel #'main
-;                           :executable t)
+; バイナリにするためのおまじない
+(defun mto-bin ()
+  (sb-ext:save-lisp-and-die "mto-sbcl"
+                            :toplevel #'main
+                            :executable t))
+; バイナリにする場合はこのコメントを外して (main) をコメントアウトする
+;(mto-bin)
 
 (main)
