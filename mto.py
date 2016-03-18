@@ -3,7 +3,7 @@
 #
 # Author: nakinor
 # Created: 2011-10-18
-# Revised: 2016-01-24
+# Revised: 2016-01-28
 
 # コマンドラインから引数を得るで
 import os

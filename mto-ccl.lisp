@@ -1,17 +1,20 @@
 ;-*- coding: utf-8 -*-
 ; Author: nakinor
 ; Created: 2016-01-24
-; Revised: 2016-03-16
+; Revised: 2016-03-18
 
 ; Common Lisp での実装にチャレンジ
 ; Clozure CL 向け
 ;
 ; CCL では環境変数を利用し、またコンパイルするようにした。
 ; というか、スクリプト的に使うにはどうすればいいんだ？
+;
 ; わかった、下記のようにすれば良いらしい。ただし引数の length が違うので、
 ; ダミー を入れないといけない。
+;
 ; ccl -l mto-ccl.lisp -e '(quit)' -- dummy tradkana foo.txt
-
+;
+; コンパイルする方法は面倒なので Makefile にまかせた
 
 ; ライブラリの読み込み(これが無いと検索・置換ができない)
 (load "~/quicklisp/setup.lisp")
@@ -125,7 +128,7 @@
 
 ; 使い方説明
 (defun mto-usage ()
-  (format t "Usage: ./mto-ccl options inputfile
+  (format t "Usage: ccl -l mto-ccl.lisp -e '(quit)' -- dummy options inputfile
 options:
   tradkana    歴史的仮名使いに変換します
   modernkana  現代仮名使いに変換します
@@ -141,10 +144,12 @@ options:
          (replace-from-stdin))
         (t (mto-usage))))
 
-(defun mto-bin ()
+; バイナリにするためのおまじない
+(defun mto-bin()
   (ccl:save-application "mto-ccl"
                         :toplevel-function #'main
                         :prepend-kernel t))
-
+; バイナリにする場合はこのコメントを外して (main) の方をコメントアウトする
 ;(mto-bin)
+
 (main)

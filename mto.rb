@@ -1,7 +1,7 @@
 #!/usr/local/bin/ruby -EUTF-8
 # Author: nakinor
 # Created: 2011-10-11
-# Revised: 2016-01-24
+# Revised: 2016-01-28
 
 # デフォルトの辞書の場所(絶対パスで指定した方が良い)
 kana_jisyo  = ENV['MTODIC'] + "/kana-jisyo"

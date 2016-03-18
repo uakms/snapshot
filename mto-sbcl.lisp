@@ -1,7 +1,7 @@
 ;-*- coding: utf-8 -*-
 ; Author: nakinor
 ; Created: 2013-11-23
-; Revised: 2016-03-16
+; Revised: 2016-03-18
 
 ; Common Lisp での実装にチャレンジ
 ; SBCL 向け
@@ -9,7 +9,7 @@
 ; 辞書へのパスを環境変数を利用して取得するようにした
 ;
 ; Usage:
-;   sbcl --script  mto-sbcl.lisp options inputfile
+;   sbcl --script mto-sbcl.lisp options inputfile
 ;
 ;
 ; バイナリにコンパイルする場合はバイナリにする部分のコメントを外して
@@ -129,7 +129,7 @@
 
 ; 使い方説明
 (defun mto-usage ()
-  (format t "Usage: sbcl mto-sbcl.lisp options inputfile
+  (format t "Usage: sbcl --script mto-sbcl.lisp options inputfile
 options:
   tradkana    歴史的仮名使いに変換します
   modernkana  現代仮名使いに変換します
@@ -150,7 +150,7 @@ options:
   (sb-ext:save-lisp-and-die "mto-sbcl"
                             :toplevel #'main
                             :executable t))
-; バイナリにする場合はこのコメントを外して (main) をコメントアウトする
+; バイナリにする場合はこのコメントを外して (main) の方をコメントアウトする
 ;(mto-bin)
 
 (main)

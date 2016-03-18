@@ -42,9 +42,6 @@ func StringCarReplacer(ifile string) {
 	}
 	str := string(content)
 	for _, element := range dicarr {
-		//tmp := strings.Split(str, element[0])
-		//str = strings.Join(tmp, element[1])
-		// どっちも変わらんのう
 		str = strings.Replace(str, element[0], element[1], -1)
 	}
 	fmt.Printf("%s", str)

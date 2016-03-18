@@ -7,7 +7,6 @@
 
 # 辞書の場所を絶対パスで指定する
 use FindBin;
-
 my $kana_jisyo  = "$ENV{MTODIC}/kana-jisyo";
 my $kanji_jisyo = "$ENV{MTODIC}/kanji-jisyo";
 
