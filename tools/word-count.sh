@@ -1,5 +1,3 @@
-#!/bin/sh
-#
 # Author: nakinor
 # Created: 2011-10-09
 # Revised: 2016-01-28

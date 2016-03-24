@@ -1,4 +1,3 @@
-#!/usr/local/bin/lua
 --[[
   Author: nakinor
   Created: 2011-12-22

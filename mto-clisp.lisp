@@ -1,5 +1,3 @@
-#!/usr/local/bin/clisp
-;-*- coding: utf-8 -*-
 ; Author: nakinor
 ; Created: 2012-06-05
 ; Revised: 2016-01-28

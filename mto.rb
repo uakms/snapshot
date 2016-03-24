@@ -1,4 +1,3 @@
-#!/usr/local/bin/ruby -EUTF-8
 # Author: nakinor
 # Created: 2011-10-11
 # Revised: 2016-01-28

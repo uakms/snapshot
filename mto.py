@@ -1,6 +1,3 @@
-#!/usr/local/bin/python3
-# -*- coding: utf-8 -*-
-#
 # Author: nakinor
 # Created: 2011-10-18
 # Revised: 2016-01-28

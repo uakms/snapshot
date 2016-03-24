@@ -1,5 +1,3 @@
-;;-*- coding: utf-8 -*-
-;;
 ;; Author: nakinor
 ;; Created: 2011-10-12
 ;; Revised: 2016-01-28
