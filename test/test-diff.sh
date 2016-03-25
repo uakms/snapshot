@@ -1,5 +1,3 @@
-#!/bin/sh
-
 ${1} ${2} tradkana test/ModernKanaNewKanji.ok > test/TradKanaNewKanji.out
 if diff -q test/TradKanaNewKanji.out test/TradKanaNewKanji.ok > /dev/null; then
     echo "  tradkana test:   \033[3#2mOK\033[0m"
