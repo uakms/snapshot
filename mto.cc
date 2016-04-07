@@ -1,6 +1,6 @@
 /* Author: nakinor
  * Created: 2016-02-29
- * Revised: 2016-03-01
+ * Revised: 2016-04-07
  */
 
 #include <array>
@@ -12,7 +12,7 @@
 /* interface */
 class MtoDict {
 private:
-  std::array<std::array<std::string, 2>, 4500> innerDict;
+  std::array<std::array<std::string, 2>, 5000> innerDict;
   int elemSize;
 
 public:
