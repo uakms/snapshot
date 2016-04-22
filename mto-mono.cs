@@ -1,20 +1,18 @@
-﻿/*
+/*
  * mto を C# で実装する実験 (CUI版)
  * MacOSX 上の mono で動くように
  *
  * Author: nakinor
  * Created: 2012-03-23
- * Revised: 2016-01-28
+ * Revised: 2016-04-22
  *
  */
 
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
+using System;                         // Console, Environment
+using System.Collections;             // ArrayList
+using System.IO;                      // TextReader
+using System.Text;                    // Encoding
+using System.Text.RegularExpressions; // Regex, Match
 
 namespace mtocw
 {
