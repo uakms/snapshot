@@ -4,10 +4,10 @@
     git clone https://github.com/nakinor/mto.git mtodic
 
 ## Emacs での利用
-25.1.50 で動作を確認しています。ブラグイン形式の [emacs-mto](http://github.com/nakinor/emacs-mto) を使います。
+26.0.50 で動作を確認しています。ブラグイン形式の [emacs-mto](http://github.com/nakinor/emacs-mto) を使います。
 
 ## Vim での利用
-8.0.0004 で動作を確認しています。ブラグイン形式の [vim-mto](http://github.com/nakinor/vim-mto) を使います。
+8.0.0104 で動作を確認しています。ブラグイン形式の [vim-mto](http://github.com/nakinor/vim-mto) を使います。
 
 ## 端末上での各種スクリプトの利用
 辞書ディレクトリへのパスを環境変数から探すので、`export MTODIC="/Users/path/to/mtodic"` 等の絶対パスにて `MTODIC` を設定しておいてください。
@@ -15,7 +15,7 @@
 環境変数が適切に設定されていればスクリプトをどこに置いても動くはずですが、とりあえず下記のコマンドはカレントディレクトリが snapshot であるとします。
 
 ### Python3
-3.5.2 で動作確を認しています。
+3.5.1 で動作確を認しています。
 
     python3 mto.py tradkana test/seed
 
@@ -36,7 +36,7 @@
     lua mto.lua tradkana test/seed
 
 ### Go
-1.7.0 で動作を確認しています。
+1.7.3 で動作を確認しています。
 
     go run mto.go tradkana test/seed
 
@@ -46,46 +46,46 @@
     ./mto tradkana test/seed
 
 ### CSharp
-momo 4.4.0 で動作を確認しています。
+momo 4.6.1 で動作を確認しています。
 
     mcs mto-mono.cs
     mono mto-mono.exe tradkana test/seed
 
 ### Objective-C
-Xcode 7.3.1 で動作を確認しています。
+Xcode 8.0.0 で動作を確認しています。
 
     clang -framework Foundation osx/main.m osx/MTODict.m -o mto-objc
     ./mto-objc tradkana test/seed
 
 ### C
-Xcode 7.3.1 で動作を確認しています。
+Xcode 8.0.0 で動作を確認しています。
 
     clang mto.c -o mto-c
     ./mto-c tradkana test/seed
 
 ### C++
-Xcode 7.3.1 で動作を確認しています。
+Xcode 8.0.0 で動作を確認しています。
 
     clang++ mto.cc -o mto-cc
     ./mto-cc tradkana test/seed
 
 ### Node.js
-6.5.0 で動作を確認しています。
+7.0.0 で動作を確認しています。
 
     node mto-node.js tradkana test/seed
 
 ### PHP
-5.5.36 で動作を確認しています。
+5.5.38 で動作を確認しています。
 
     php mto.php tradkana test/seed
 
 ### Gauche
-0.9.5_pre2 で動作を確認しています。
+0.9.5 で動作を確認しています。
 
     gosh mto.scm tradkana test/seed
 
 ### SBCL
-1.3.9.87 で動作を確認しています。ライブラリの cl-ppcre-2.0.11 が必要です。
+1.3.11.44 で動作を確認しています。ライブラリの cl-ppcre-2.0.11 が必要です。
 
     sbcl --script mto-sbcl.lisp tradkana test/seed
 
