@@ -1,9 +1,9 @@
 # Author: nakinor
 # Created: 2016-01-25
-# Revised: 2016-03-16
+# Revised: 2016-12-30
 
 .PHONY: all test clean
-all: mto-c mto-cc mto-objc mto-go mto-mono mto-ccl mto-sbcl
+all: mto-c mto-cc mto-objc mto-go mto-mono mto-ccl mto-sbcl mto-swift
 
 mto-c: mto.c
 	clang -Ofast -o mto-c mto.c
@@ -13,6 +13,9 @@ mto-cc: mto.cc
 
 mto-objc: osx/main.m osx/MTODict.m
 	clang -Ofast -o mto-objc -framework Foundation osx/main.m osx/MTODict.m
+
+mto-swift: mto.swift
+	xcrun --sdk `xcrun --show-sdk-path` swiftc -o mto-swift mto.swift
 
 mto-go: mto.go
 	go build -o mto-go mto.go
@@ -24,7 +27,7 @@ mto-ccl: mto-ccl.lisp
 	@sed -e 's/unprocessed-command-line-arguments/command-line-argument-list/' mto-ccl.lisp > t1-mto-ccl.lisp
 	@sed -e 's/;(mto-bin)/(mto-bin)/' t1-mto-ccl.lisp > t2-mto-ccl.lisp
 	@sed -e 's/(main)/;(main)/' t2-mto-ccl.lisp > bin-mto-ccl.lisp
-	dx86cl64 --no-init --load bin-mto-ccl.lisp
+	ccl --no-init --load bin-mto-ccl.lisp
 	@rm *-mto-ccl.lisp
 
 mto-sbcl: mto-sbcl.lisp
@@ -41,14 +44,15 @@ test: test-gen \
 	test-lua \
 	test-gosh \
 	test-node \
+	test-php \
 	test-mono \
 	test-go \
-	test-php \
 	test-c \
 	test-cc \
 	test-ccl \
 	test-sbcl \
-	test-objc
+	test-objc \
+	test-swift
 
 test-gen: test/seed
 	@echo "Generate test files..."
@@ -115,6 +119,10 @@ test-sbcl: mto-sbcl
 test-objc: mto-objc
 	@echo "Objective-C Test!"
 	@sh test/test-diff.sh ./mto-objc
+
+test-swift: mto-swift
+	@echo "Swift Test!"
+	@sh test/test-diff.sh ./mto-swift
 
 clean:
 	find . -type file -perm 755 -exec rm -f {} ';'

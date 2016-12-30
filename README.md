@@ -7,7 +7,7 @@
 26.0.50 で動作を確認しています。ブラグイン形式の [emacs-mto](http://github.com/nakinor/emacs-mto) を使います。
 
 ## Vim での利用
-8.0.0104 で動作を確認しています。ブラグイン形式の [vim-mto](http://github.com/nakinor/vim-mto) を使います。
+8.0.0134 で動作を確認しています。ブラグイン形式の [vim-mto](http://github.com/nakinor/vim-mto) を使います。
 
 ## 端末上での各種スクリプトの利用
 辞書ディレクトリへのパスを環境変数から探すので、`export MTODIC="/Users/path/to/mtodic"` 等の絶対パスにて `MTODIC` を設定しておいてください。
@@ -15,12 +15,12 @@
 環境変数が適切に設定されていればスクリプトをどこに置いても動くはずですが、とりあえず下記のコマンドはカレントディレクトリが snapshot であるとします。
 
 ### Python3
-3.5.1 で動作確を認しています。
+3.6.0 で動作確を認しています。
 
     python3 mto.py tradkana test/seed
 
 ### Ruby
-2.4.0dev で動作を確認しています。また、mruby でも動作しますが、`mruby-io` と `mruby-env`、そして `mruby-regexp-pcre` もしくは `mruby-onig-regexp` を組み込んでビルドしておいてください。
+2.5.0dev で動作を確認しています。また、mruby でも動作しますが、`mruby-io` と `mruby-env`、そして `mruby-regexp-pcre` もしくは `mruby-onig-regexp` を組み込んでビルドしておいてください。
 
     ruby mto.rb tradkana test/seed
     mruby mto.rb tradkana test/seed
@@ -57,6 +57,12 @@ Xcode 8.0.0 で動作を確認しています。
     clang -framework Foundation osx/main.m osx/MTODict.m -o mto-objc
     ./mto-objc tradkana test/seed
 
+### Swift
+Apple Swift 3.0.1 で動作を確認しています。
+
+    xcrun --sdk `xcrun --show-sdk-path` swiftc -o mto-swift mto.swift
+    ./mto-swift tradkana test/seed
+
 ### C
 Xcode 8.0.0 で動作を確認しています。
 
@@ -70,12 +76,12 @@ Xcode 8.0.0 で動作を確認しています。
     ./mto-cc tradkana test/seed
 
 ### Node.js
-7.0.0 で動作を確認しています。
+7.3.0 で動作を確認しています。
 
     node mto-node.js tradkana test/seed
 
 ### PHP
-5.5.38 で動作を確認しています。
+7.1.0 で動作を確認しています。
 
     php mto.php tradkana test/seed
 
