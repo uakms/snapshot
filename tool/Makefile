@@ -1,6 +1,6 @@
 # Author: nakinor
 # Created: 2016-01-25
-# Revised: 2016-12-30
+# Revised: 2016-12-31
 
 .PHONY: all test clean
 all: mto-c mto-cc mto-objc mto-go mto-mono mto-ccl mto-sbcl mto-swift
@@ -11,8 +11,8 @@ mto-c: mto.c
 mto-cc: mto.cc
 	clang++ -Ofast -o mto-cc mto.cc
 
-mto-objc: osx/main.m osx/MTODict.m
-	clang -Ofast -o mto-objc -framework Foundation osx/main.m osx/MTODict.m
+mto-objc: osx/objc-cli/main.m osx/objc-cli/MTODict.m
+	clang -Ofast -o mto-objc -framework Foundation osx/objc-cli/main.m osx/objc-cli/MTODict.m
 
 mto-swift: mto.swift
 	xcrun --sdk `xcrun --show-sdk-path` swiftc -o mto-swift mto.swift

@@ -12,7 +12,7 @@
 ## 端末上での各種スクリプトの利用
 辞書ディレクトリへのパスを環境変数から探すので、`export MTODIC="/Users/path/to/mtodic"` 等の絶対パスにて `MTODIC` を設定しておいてください。
 
-環境変数が適切に設定されていればスクリプトをどこに置いても動くはずですが、とりあえず下記のコマンドはカレントディレクトリが snapshot であるとします。
+環境変数が適切に設定されていればスクリプトをどこに置いても動くはずですが、とりあえず下記のコマンドはカレントディレクトリが snapshot/tool であるとします。
 
 ### Python3
 3.6.0 で動作確を認しています。
@@ -91,7 +91,7 @@ Xcode 8.0.0 で動作を確認しています。
     gosh mto.scm tradkana test/seed
 
 ### SBCL
-1.3.11.44 で動作を確認しています。ライブラリの cl-ppcre-2.0.11 が必要です。
+1.3.12.100 で動作を確認しています。ライブラリの cl-ppcre-2.0.11 が必要です。
 
     sbcl --script mto-sbcl.lisp tradkana test/seed
 
@@ -112,17 +112,17 @@ Golang, C, C++, C#, Objective-C, Clozure CL のようなコンパイル系のも
 ### conv.go
 引数で渡した辞書をチェックしたり数えたり JSON っぽく出力します。
 
-    go run tools/conv.go -c mtodic/kana-jisyo
+    go run util/conv.go -c mtodic/kana-jisyo
 
 ### jisyo-converter.rb
 `conv.go` を作成する前に使っていたものです。カレントディレクトリに JSON ファイルが出力されます。
 
-    ruby tools/jisyo-converter.rb
+    ruby util/jisyo-converter.rb
 
 ### word-count.sh
 `conv.go` を作成する前に使っていたものです。辞書の要素数や簡易的なチェックをします。
 
-    sh tools/word-count.sh
+    sh util/word-count.sh
 
 ### mto.js
 この[ページ](http://nakinor.github.io/mto/)で利用している JavaScript です。実はこれが結構速かったりします。ブラウザのエンジンが優秀なのか、`split` and `join` が `replace` よりも速いからなのか。今はこればかり使っています。
