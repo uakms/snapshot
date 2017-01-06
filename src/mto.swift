@@ -1,6 +1,6 @@
 // Author: nakinor
 // Created: 2016-12-30
-// Revised: 2016-12-30
+// Revised: 2017-01-05
 
 import Foundation
 
@@ -11,7 +11,7 @@ func createDict(dictfile:String) {
     //let mtodir = ProcessInfo.processInfo.environment["MTODIC"]! + "/"
     //let dictfile = mtodir + dictfile
 
-    // ちなみに `var tmpdict = [[]]` のようにすると、先頭に空の `[]` が入ってしまうよ
+    // `var tmpdict = [[]]` のようにすると先頭に空の `[]` が入ってしまうよ
     // 外に出してグローバル化した
     //var tmpdict:[[String]] = []
 
@@ -26,14 +26,14 @@ func createDict(dictfile:String) {
 
         // ファイルを開く
         let data = try String(contentsOfFile: dictfile,
-                              encoding: String.Encoding.utf8)
+                                    encoding: String.Encoding.utf8)
         // 一行ずつ処理する
         data.enumerateLines(invoking: {
             line, stop in
             // コメント行を探す
             let match = regexp1.matches(in: line,
-                                 options: [],
-                                   range: NSMakeRange(0, (line as NSString).length))
+                                   options: [],
+                                     range: NSMakeRange(0, (line as NSString).length))
 
             // コメント行ではなかったものについて処理
             if (match.count != 0) {
@@ -58,7 +58,7 @@ func replaceStringCar(infile:String) {
     let inputfile = infile
     do {
         let data = try String(contentsOfFile: inputfile,
-                              encoding: String.Encoding.utf8)
+                                    encoding: String.Encoding.utf8)
 
         // 一行ずつ変換して出力する方法(遅い)
         /*
@@ -87,7 +87,7 @@ func replaceStringCdr(infile:String) {
     let inputfile = infile
     do {
         let data = try String(contentsOfFile: inputfile,
-                              encoding: String.Encoding.utf8)
+                                    encoding: String.Encoding.utf8)
 
         // 一行ずつ変換して出力する方法(遅い)
         /*
@@ -144,7 +144,7 @@ func main() {
             if args[1] == "checkdictkana" {
                 let dictfilepath = mtodir! + "/kana-jisyo"
                 // 引数を渡す時にラベルをつけないといけない
-                // dictfile という仮引数に dictfilepath の内容を渡すよって感じかな
+                // dictfile という仮引数に dictfilepath の内容を渡すよって感じ
                 createDict(dictfile:dictfilepath)
                 print("かな辞書の語彙は現在 \(innerDict.count) です。")
                 //print("checkdictkanaやな。")

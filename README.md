@@ -7,12 +7,12 @@
 26.0.50 で動作を確認しています。ブラグイン形式の [emacs-mto](http://github.com/nakinor/emacs-mto) を使います。
 
 ## Vim での利用
-8.0.0134 で動作を確認しています。ブラグイン形式の [vim-mto](http://github.com/nakinor/vim-mto) を使います。
+8.0.0142 で動作を確認しています。ブラグイン形式の [vim-mto](http://github.com/nakinor/vim-mto) を使います。
 
 ## 端末上での各種スクリプトの利用
 辞書ディレクトリへのパスを環境変数から探すので、`export MTODIC="/Users/path/to/mtodic"` 等の絶対パスにて `MTODIC` を設定しておいてください。
 
-環境変数が適切に設定されていればスクリプトをどこに置いても動くはずですが、とりあえず下記のコマンドはカレントディレクトリが snapshot/tool であるとします。
+環境変数が適切に設定されていればスクリプトをどこに置いても動くはずですが、とりあえず下記のコマンドはカレントディレクトリが snapshot/src であるとします。
 
 ### Python3
 3.6.0 で動作確を認しています。
@@ -112,17 +112,17 @@ Golang, C, C++, C#, Objective-C, Clozure CL のようなコンパイル系のも
 ### conv.go
 引数で渡した辞書をチェックしたり数えたり JSON っぽく出力します。
 
-    go run util/conv.go -c mtodic/kana-jisyo
+    go run utils/conv.go -c mtodic/kana-jisyo
 
 ### jisyo-converter.rb
 `conv.go` を作成する前に使っていたものです。カレントディレクトリに JSON ファイルが出力されます。
 
-    ruby util/jisyo-converter.rb
+    ruby utils/jisyo-converter.rb
 
 ### word-count.sh
 `conv.go` を作成する前に使っていたものです。辞書の要素数や簡易的なチェックをします。
 
-    sh util/word-count.sh
+    sh utils/word-count.sh
 
 ### mto.js
 この[ページ](http://nakinor.github.io/mto/)で利用している JavaScript です。実はこれが結構速かったりします。ブラウザのエンジンが優秀なのか、`split` and `join` が `replace` よりも速いからなのか。今はこればかり使っています。
