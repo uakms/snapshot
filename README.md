@@ -7,7 +7,7 @@
 26.0.50 で動作を確認しています。ブラグイン形式の [emacs-mto](http://github.com/nakinor/emacs-mto) を使います。
 
 ## Vim での利用
-8.0.0142 で動作を確認しています。ブラグイン形式の [vim-mto](http://github.com/nakinor/vim-mto) を使います。
+8.0.0170 で動作を確認しています。ブラグイン形式の [vim-mto](http://github.com/nakinor/vim-mto) を使います。
 
 ## 端末上での各種スクリプトの利用
 辞書ディレクトリへのパスを環境変数から探すので、`export MTODIC="/Users/path/to/mtodic"` 等の絶対パスにて `MTODIC` を設定しておいてください。
@@ -91,7 +91,7 @@ Xcode 8.0.0 で動作を確認しています。
     gosh mto.scm tradkana test/seed
 
 ### SBCL
-1.3.12.100 で動作を確認しています。ライブラリの cl-ppcre-2.0.11 が必要です。
+1.3.13.43 で動作を確認しています。ライブラリの cl-ppcre-2.0.11 が必要です。
 
     sbcl --script mto-sbcl.lisp tradkana test/seed
 
