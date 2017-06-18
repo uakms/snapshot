@@ -4,7 +4,7 @@
  *
  * Author: nakinor
  * Created: 2012-03-23
- * Revised: 2016-04-22
+ * Revised: 2017-06-18
  *
  */
 
@@ -86,15 +86,12 @@ namespace mtocw
         {
           StreamReader sr =
             new StreamReader(inputfile, Encoding.GetEncoding("utf-8"));
-          string line;
-          while ((line = sr.ReadLine()) != null)
+          string lines = sr.ReadToEnd();
+          foreach (string[] key in LIST)
             {
-              foreach (string[] key in LIST)
-                {
-                  line = line.Replace(key[0], key[1]);
-                }
-              Console.WriteLine(line);
+              lines = lines.Replace(key[0], key[1]);
             }
+          Console.Write(lines);
           sr.Close();
         }
       catch (System.IO.FileNotFoundException)
