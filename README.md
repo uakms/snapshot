@@ -7,7 +7,7 @@
 26.0.50 で動作を確認しています。ブラグイン形式の [emacs-mto](http://github.com/nakinor/emacs-mto) を使います。
 
 ## Vim での利用
-8.0.0606 で動作を確認しています。ブラグイン形式の [vim-mto](http://github.com/nakinor/vim-mto) を使います。
+8.0.0647 で動作を確認しています。ブラグイン形式の [vim-mto](http://github.com/nakinor/vim-mto) を使います。
 
 ## 端末上での各種スクリプトの利用
 辞書ディレクトリへのパスを環境変数から探すので、`export MTODIC="/Users/path/to/mtodic"` 等の絶対パスにて `MTODIC` を設定しておいてください。
@@ -46,7 +46,7 @@
     ./mto tradkana test/seed
 
 ### CSharp
-momo 4.8.0 で動作を確認しています。
+momo 5.0.0 で動作を確認しています。
 
     mcs mto-mono.cs
     mono mto-mono.exe tradkana test/seed
@@ -76,7 +76,7 @@ Xcode 8.0.0 で動作を確認しています。
     ./mto-cc tradkana test/seed
 
 ### Node.js
-7.10.0 で動作を確認しています。
+8.0.0 で動作を確認しています。
 
     node mto-node.js tradkana test/seed
 
@@ -91,7 +91,7 @@ Xcode 8.0.0 で動作を確認しています。
     gosh mto.scm tradkana test/seed
 
 ### SBCL
-1.3.17.40 で動作を確認しています。ライブラリの cl-ppcre-2.0.11 が必要です。
+1.3.18.75 で動作を確認しています。ライブラリの cl-ppcre-2.0.11 が必要です。
 
     sbcl --script mto-sbcl.lisp tradkana test/seed
 

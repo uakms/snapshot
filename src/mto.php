@@ -2,43 +2,42 @@
 
 /* Author: nakinor
  * Created: 2016-03-13
- * Revised: 2016-03-13
+ * Revised: 2017-06-19
  */
 
 $kana_jisyo  = getenv("MTODIC") . "/kana-jisyo";
 $kanji_jisyo = getenv("MTODIC") . "/kanji-jisyo";
 
 function create_dict($jisyo) {
-  $tmp_arr = array();
-  $fp = fopen($jisyo, 'r');
-  while ($line = fgets($fp)) {
-    if (preg_match('/^;.*|^$/', $line) != TRUE) {
-      $string = preg_replace('/[ \t]+;.*/', "", $line);
-      $pair = preg_split('/ \//', rtrim($string));
-      array_push($tmp_arr, $pair);
-    }
-  }
-  fclose($fp);
-  return $tmp_arr;
-}
-
-function replace_strings($ifile, $jisyo, $flag) {
-  $fp = @fopen($ifile, 'r')
-          or die("ファイルを開けません\n");
-  while ($line = fgets($fp)) {
-    if ($flag == "car") {
-      foreach($jisyo as $x) {
-        $line = str_replace($x[0], $x[1], $line);
-      }
-      echo $line;
-    } else {
-        foreach($jisyo as $x) {
-          $line = str_replace($x[1], $x[0], $line);
-        }
-        echo $line;
+    $tmp_arr = array();
+    $fp = fopen($jisyo, 'r');
+    while ($line = fgets($fp)) {
+        if (preg_match('/^;.*|^$/', $line) != TRUE) {
+            $string = preg_replace('/[ \t]+;.*/', "", $line);
+            $pair = preg_split('/ \//', rtrim($string));
+            array_push($tmp_arr, $pair);
         }
     }
     fclose($fp);
+    return $tmp_arr;
+}
+
+function replace_strings($ifile, $jisyo, $flag) {
+    $buf = file_get_contents($ifile);
+    if ($buf === false) {
+        echo "ファイルを開けません\n";
+    }
+    if ($flag == "car") {
+        foreach($jisyo as $x) {
+            $buf = str_replace($x[0], $x[1], $buf);
+        }
+        echo $buf;
+    } else {
+        foreach($jisyo as $x) {
+            $buf = str_replace($x[1], $x[0], $buf);
+        }
+        echo $buf;
+    }
 }
 
 function usage() {
