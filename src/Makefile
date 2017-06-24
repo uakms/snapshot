@@ -1,41 +1,57 @@
 # Author: nakinor
 # Created: 2016-01-25
-# Revised: 2016-12-31
+# Revised: 2017-06-24
 
-.PHONY: all test clean
-all: mto-c mto-cc mto-objc mto-go mto-mono mto-ccl mto-sbcl mto-swift
+.PHONY: all test bench clean
 
-mto-c: mto.c
-	clang -Ofast -o mto-c mto.c
+BINDIR    = bin
+TEST_PRG  = test/test-diff.sh
+BENCH_PRG = bench/benchmark.rb
 
-mto-cc: mto.cc
-	clang++ -Ofast -o mto-cc mto.cc
+# Section: Build the binary files
+all: $(BINDIR)/mto-c \
+	$(BINDIR)/mto-cc \
+	$(BINDIR)/mto-objc \
+	$(BINDIR)/mto-go \
+	$(BINDIR)/mto-mono \
+	$(BINDIR)/mto-ccl \
+	$(BINDIR)/mto-sbcl \
+	$(BINDIR)/mto-swift
 
-mto-objc: osx/objc-cli/main.m osx/objc-cli/MTODict.m
-	clang -Ofast -o mto-objc -framework Foundation osx/objc-cli/main.m osx/objc-cli/MTODict.m
+$(BINDIR)/mto-c: mto.c
+	clang -Ofast -o $(BINDIR)/mto-c mto.c
 
-mto-swift: mto.swift
-	xcrun --sdk `xcrun --show-sdk-path` swiftc -o mto-swift mto.swift
+$(BINDIR)/mto-cc: mto.cc
+	clang++ -Ofast -o $(BINDIR)/mto-cc mto.cc
 
-mto-go: mto.go
-	go build -o mto-go mto.go
+$(BINDIR)/mto-objc: osx/objc-cli/main.m osx/objc-cli/MTODict.m
+	clang -Ofast -o $(BINDIR)/mto-objc -framework Foundation osx/objc-cli/main.m osx/objc-cli/MTODict.m
 
-mto-mono: mto-mono.cs
-	mcs -out:mto-mono mto-mono.cs
+$(BINDIR)/mto-swift: mto.swift
+	xcrun --sdk `xcrun --show-sdk-path` swiftc -o $(BINDIR)/mto-swift mto.swift
 
-mto-ccl: mto-ccl.lisp
+$(BINDIR)/mto-go: mto.go
+	go build -o $(BINDIR)/mto-go mto.go
+
+$(BINDIR)/mto-mono: mto-mono.cs
+	mcs -out:$(BINDIR)/mto-mono mto-mono.cs
+
+$(BINDIR)/mto-ccl: mto-ccl.lisp
 	@sed -e 's/unprocessed-command-line-arguments/command-line-argument-list/' mto-ccl.lisp > t1-mto-ccl.lisp
 	@sed -e 's/;(mto-bin)/(mto-bin)/' t1-mto-ccl.lisp > t2-mto-ccl.lisp
 	@sed -e 's/(main)/;(main)/' t2-mto-ccl.lisp > bin-mto-ccl.lisp
 	ccl --no-init --load bin-mto-ccl.lisp
+	@mv mto-ccl $(BINDIR)
 	@rm *-mto-ccl.lisp
 
-mto-sbcl: mto-sbcl.lisp
+$(BINDIR)/mto-sbcl: mto-sbcl.lisp
 	@sed -e 's/;(mto-bin)/(mto-bin)/' mto-sbcl.lisp > t1-mto-sbcl.lisp
 	@sed -e 's/(main)/;(main)/' t1-mto-sbcl.lisp > bin-mto-sbcl.lisp
 	sbcl --noinform --no-sysinit --no-userinit --load bin-mto-sbcl.lisp 1>/dev/null
+	@mv mto-sbcl $(BINDIR)
 	@rm *-mto-sbcl.lisp
 
+# Section: TEST
 test: test-gen \
 	test-py \
 	test-rb \
@@ -62,70 +78,130 @@ test-gen: test/seed
 
 test-py:
 	@echo "Python3 Test!"
-	@sh test/test-diff.sh python3 mto.py
+	@sh $(TEST_PRG) python3 mto.py
 
 test-rb:
 	@echo "Ruby Test!"
-	@sh test/test-diff.sh ruby mto.rb
+	@sh $(TEST_PRG) ruby mto.rb
 
 test-mrb:
 	@echo "MRuby Test!"
-	@sh test/test-diff.sh mruby mto.rb
+	@sh $(TEST_PRG) mruby mto.rb
 
 test-pl:
 	@echo "Perl Test!"
-	@sh test/test-diff.sh perl mto.pl
+	@sh $(TEST_PRG) perl mto.pl
 
 test-lua:
 	@echo "Lua Test!"
-	@sh test/test-diff.sh lua mto.lua
+	@sh $(TEST_PRG) lua mto.lua
 
 test-gosh:
 	@echo "Gauche Test!"
-	@sh test/test-diff.sh gosh mto.scm
+	@sh $(TEST_PRG) gosh mto.scm
 
 test-node:
 	@echo "Node.js Test!"
-	@sh test/test-diff.sh node mto-node.js
+	@sh $(TEST_PRG) node mto-node.js
 
 test-php:
 	@echo "PHP Test!"
-	@sh test/test-diff.sh php mto.php
+	@sh $(TEST_PRG) php mto.php
 
-test-mono: mto-mono
+test-mono: $(BINDIR)/mto-mono
 	@echo "Mono Test!"
-	@sh test/test-diff.sh mono mto-mono
+	@sh $(TEST_PRG) mono $<
 
-test-go: mto-go
+test-go: $(BINDIR)/mto-go
 	@echo "Go Test!"
-	@sh test/test-diff.sh ./mto-go
+	@sh $(TEST_PRG) $<
 
-test-c: mto-c
+test-c: $(BINDIR)/mto-c
 	@echo "C Test!"
-	@sh test/test-diff.sh ./mto-c
+	@sh $(TEST_PRG) $<
 
-test-cc: mto-cc
+test-cc: $(BINDIR)/mto-cc
 	@echo "CC Test!"
-	@sh test/test-diff.sh ./mto-cc
+	@sh $(TEST_PRG) $<
 
-test-ccl: mto-ccl
+test-ccl: $(BINDIR)/mto-ccl
 	@echo "Clozure CL Test!"
-	@sh test/test-diff.sh ./mto-ccl
+	@sh $(TEST_PRG) $<
 
-test-sbcl: mto-sbcl
+test-sbcl: $(BINDIR)/mto-sbcl
 	@echo "SBCL Test!"
-	@sh test/test-diff.sh ./mto-sbcl
+	@sh $(TEST_PRG) $<
 
-test-objc: mto-objc
+test-objc: $(BINDIR)/mto-objc
 	@echo "Objective-C Test!"
-	@sh test/test-diff.sh ./mto-objc
+	@sh $(TEST_PRG) $<
 
-test-swift: mto-swift
+test-swift: $(BINDIR)/mto-swift
 	@echo "Swift Test!"
-	@sh test/test-diff.sh ./mto-swift
+	@sh $(TEST_PRG) $<
 
+# Section: benchmark
+bench: bench64
+
+bench32: bench/0032kib.txt
+	ruby $(BENCH_PRG) $<
+
+bench64: bench/0064kib.txt
+	ruby $(BENCH_PRG) $<
+
+bench128: bench/0128kib.txt
+	ruby $(BENCH_PRG) $<
+
+bench256: bench/0256kib.txt
+	ruby $(BENCH_PRG) $<
+
+bench512: bench/0512kib.txt
+	ruby $(BENCH_PRG) $<
+
+bench1024: bench/1024kib.txt
+	ruby $(BENCH_PRG) $<
+
+bench2048: bench/2048kib.txt
+	ruby $(BENCH_PRG) $<
+
+bench3072: bench/3072kib.txt
+	ruby $(BENCH_PRG) $<
+
+bench/0032kib.txt: bench/nippon.txt
+	@cp $< $@
+
+bench/0064kib.txt: bench/0032kib.txt
+	@cat $< > $@
+	@cat $< >> $@
+
+bench/0128kib.txt: bench/0064kib.txt
+	@cat $< > $@
+	@cat $< >> $@
+
+bench/0256kib.txt: bench/0128kib.txt
+	@cat $< > $@
+	@cat $< >> $@
+
+bench/0512kib.txt: bench/0256kib.txt
+	@cat $< > $@
+	@cat $< >> $@
+
+bench/1024kib.txt: bench/0512kib.txt
+	@cat $< > $@
+	@cat $< >> $@
+
+bench/2048kib.txt: bench/1024kib.txt
+	@cat $< > $@
+	@cat $< >> $@
+
+bench/3072kib.txt: bench/1024kib.txt bench/2048kib.txt
+	@cat $^ > $@
+
+# Section: CLEAN
 clean:
-	find . -type file -perm 755 -exec rm -f {} ';'
+	find bin -type file -perm 755 -exec rm -f {} ';'
 	find . -type file -name '*.ok' -exec rm -f {} ';'
 	find . -type file -name '*.out' -exec rm -f {} ';'
-#	rm mto-c mto-objc mto-go mto-mono mto-ccl mto-sbcl
+
+benchclean:
+	find bench -type file -name '*kib.txt' -exec rm -f {} ';'

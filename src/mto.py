@@ -1,6 +1,6 @@
 # Author: nakinor
 # Created: 2011-10-18
-# Revised: 2016-01-28
+# Revised: 2017-06-24
 
 # コマンドラインから引数を得るで
 import os
@@ -49,7 +49,7 @@ def replace_strings(use_dict, opt):
                     text = text.replace(x[0], x[1])
                 else:
                     text = text.replace(x[1], x[0])
-            print('{0}'.format(text).rstrip('\n'))
+            print('{0}'.format(text), end='')
     except:
         print('変換するファイルが見つからんのやけど...')
 
@@ -63,7 +63,7 @@ def replace_strings_stdin(use_dict, opt):
                 text = text.replace(x[0], x[1])
             else:
                 text = text.replace(x[1], x[0])
-        print('{0}'.format(text).rstrip('\n'))
+        print('{0}'.format(text), end='')
     except:
         print('UTF-8 以外の入力なんて知らんがな')
 
