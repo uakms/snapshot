@@ -1,13 +1,13 @@
 ## 微笑み方
-こちらの[記事](http://sci.hateblo.jp/entry/Benchmarking2)の付録です。あらかじめ GitHub にあるこの[辞書](https://github.com/nakinor/mto)を別途ダウンロード、もしくはクローンしておいてください。
+こちらの[記事](http://sci.hateblo.jp/entry/Benchmarking2)の付録です。あらかじめ GitHub にあるこの[辞書](https://github.com/uakms/mto)を別途ダウンロード、もしくはクローンしておいてください。
 
-    git clone https://github.com/nakinor/mto.git mtodic
+    git clone https://github.com/uakms/mto.git mtodic
 
 ## Emacs での利用
-26.0.50 で動作を確認しています。ブラグイン形式の [emacs-mto](http://github.com/nakinor/emacs-mto) を使います。
+26.0.50 で動作を確認しています。ブラグイン形式の [emacs-mto](http://github.com/uakms/emacs-mto) を使います。
 
 ## Vim での利用
-8.0.0666 で動作を確認しています。ブラグイン形式の [vim-mto](http://github.com/nakinor/vim-mto) を使います。
+8.0.0688 で動作を確認しています。ブラグイン形式の [vim-mto](http://github.com/uakms/vim-mto) を使います。
 
 ## 端末上での各種スクリプトの利用
 辞書ディレクトリへのパスを環境変数から探すので、`export MTODIC="/Users/path/to/mtodic"` 等の絶対パスにて `MTODIC` を設定しておいてください。
@@ -109,6 +109,8 @@ Xcode 8.0.0 で動作を確認しています。
 ### Makefile
 Golang, C, C++, C#, Objective-C, Clozure CL のようなコンパイル系のものをビルドするのが面倒なので作成しました。シェルスクリプトの方が良かったですね。
 
+また、簡易的なテストやベンチマークもすることができます。これもシェルスクリプトの方が良かったかもしれませんけど。
+
 ### conv.go
 引数で渡した辞書をチェックしたり数えたり JSON っぽく出力します。
 
@@ -125,7 +127,7 @@ Golang, C, C++, C#, Objective-C, Clozure CL のようなコンパイル系のも
     sh utils/word-count.sh
 
 ### mto.js
-この[ページ](http://nakinor.github.io/mto/)で利用している JavaScript です。実はこれが結構速かったりします。ブラウザのエンジンが優秀なのか、`split` and `join` が `replace` よりも速いからなのか。今はこればかり使っています。
+この[ページ](http://uakms.github.io/mto/)で利用している JavaScript です。実はこれが結構速かったりします。ブラウザのエンジンが優秀なのか、`split` and `join` が `replace` よりも速いからなのか。今はこればかり使っています。
 
 ### osx ディレクトリ
 ごにょごにょ。IDE で作成したプロジェクトってどのファイルを公開していいのかわからないんだよね。プロファイルに本名とか書かれちゃってるし……
