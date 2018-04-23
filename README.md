@@ -4,10 +4,10 @@
     git clone https://github.com/uakms/mto.git mtodic
 
 ## Emacs での利用
-26.0.50 で動作を確認しています。ブラグイン形式の [emacs-mto](http://github.com/uakms/emacs-mto) を使います。
+27.0.50 で動作を確認しています。ブラグイン形式の [emacs-mto](http://github.com/uakms/emacs-mto) を使います。
 
 ## Vim での利用
-8.0.0688 で動作を確認しています。ブラグイン形式の [vim-mto](http://github.com/uakms/vim-mto) を使います。
+8.0.1748 で動作を確認しています。ブラグイン形式の [vim-mto](http://github.com/uakms/vim-mto) を使います。
 
 ## 端末上での各種スクリプトの利用
 辞書ディレクトリへのパスを環境変数から探すので、`export MTODIC="/Users/path/to/mtodic"` 等の絶対パスにて `MTODIC` を設定しておいてください。
@@ -20,7 +20,7 @@
     python3 mto.py tradkana test/seed
 
 ### Ruby
-2.5.0dev で動作を確認しています。また、mruby でも動作しますが、`mruby-io` と `mruby-env`、そして `mruby-regexp-pcre` もしくは `mruby-onig-regexp` を組み込んでビルドしておいてください。
+2.6.0dev で動作を確認しています。また、mruby でも動作しますが、`mruby-io` と `mruby-env`、そして `mruby-regexp-pcre` もしくは `mruby-onig-regexp` を組み込んでビルドしておいてください。
 
     ruby mto.rb tradkana test/seed
     mruby mto.rb tradkana test/seed
@@ -36,7 +36,7 @@
     lua mto.lua tradkana test/seed
 
 ### Go
-1.8.1 で動作を確認しています。
+1.10.0 で動作を確認しています。
 
     go run mto.go tradkana test/seed
 
@@ -46,7 +46,7 @@
     ./mto tradkana test/seed
 
 ### CSharp
-momo 5.0.0 で動作を確認しています。
+momo 5.10.0 で動作を確認しています。
 
     mcs mto-mono.cs
     mono mto-mono.exe tradkana test/seed
@@ -76,22 +76,22 @@ Xcode 8.0.0 で動作を確認しています。
     ./mto-cc tradkana test/seed
 
 ### Node.js
-8.0.0 で動作を確認しています。
+9.8.0 で動作を確認しています。
 
     node mto-node.js tradkana test/seed
 
 ### PHP
-7.1.4 で動作を確認しています。
+7.2.0 で動作を確認しています。
 
     php mto.php tradkana test/seed
 
 ### Gauche
-0.9.6_pre2 で動作を確認しています。
+0.9.6_pre6 で動作を確認しています。
 
     gosh mto.scm tradkana test/seed
 
 ### SBCL
-1.3.18.75 で動作を確認しています。ライブラリの cl-ppcre-2.0.11 が必要です。
+1.4.6.85 で動作を確認しています。ライブラリの cl-ppcre-2.0.11 が必要です。
 
     sbcl --script mto-sbcl.lisp tradkana test/seed
 
@@ -104,6 +104,11 @@ Xcode 8.0.0 で動作を確認しています。
 2.47 での動作を確認しています(Panther on iBook にて)。ライブラリの cl-ppcre-2.0.7 が必要です。
 
     clisp mto-clisp.lisp tradkana test/seed
+
+### Elixir
+1.6.4 (Erlang/OTP 20.2) で動作を確認しています。
+
+    elixir mto.exs tradkana test/seed
 
 ## その他のスクリプトについて
 ### Makefile
@@ -127,7 +132,7 @@ Golang, C, C++, C#, Objective-C, Clozure CL のようなコンパイル系のも
     sh utils/word-count.sh
 
 ### mto.js
-この[ページ](http://uakms.github.io/mto/)で利用している JavaScript です。実はこれが結構速かったりします。ブラウザのエンジンが優秀なのか、`split` and `join` が `replace` よりも速いからなのか。今はこればかり使っています。
+この[ページ](https://mto.herokuapp.com/js/pc.html)で利用している JavaScript です。実はこれが結構速かったりします。ブラウザのエンジンが優秀なのか、`split` and `join` が `replace` よりも速いからなのか。今はこればかり使っています。
 
 ### osx ディレクトリ
 ごにょごにょ。IDE で作成したプロジェクトってどのファイルを公開していいのかわからないんだよね。プロファイルに本名とか書かれちゃってるし……

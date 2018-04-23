@@ -1,6 +1,6 @@
 # Author: nakinor
 # Created: 2016-01-25
-# Revised: 2017-06-24
+# Revised: 2018-04-23
 
 .PHONY: all test bench clean
 
@@ -61,6 +61,7 @@ test: test-gen \
 	test-gosh \
 	test-node \
 	test-php \
+	test-elixir \
 	test-mono \
 	test-go \
 	test-c \
@@ -107,6 +108,10 @@ test-node:
 test-php:
 	@echo "PHP Test!"
 	@sh $(TEST_PRG) php mto.php
+
+test-elixir:
+	@echo "Elixir Test!"
+	@sh $(TEST_PRG) elixir mto.exs
 
 test-mono: $(BINDIR)/mto-mono
 	@echo "Mono Test!"
